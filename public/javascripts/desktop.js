@@ -18,7 +18,7 @@ function setUpEvents() {
 	document.getElementById('right-third').addEventListener('click', goToNext)
 	document.getElementById('left-second').addEventListener('click', goToLast)
 	document.getElementById('right-fourth').addEventListener('click', goToNext)
-	document.getElementById('left-third').addEventListener('click', goBackToHome)
+	document.getElementById('left-third').addEventListener('click', goToLast)
 	// document.getElementById('right-last').addEventListener('click', goToNext)
 	// document.getElementById('left-fourth').addEventListener('click', goToLast)
 	$('#hours').keypress(handleCustomTimeSelection)
