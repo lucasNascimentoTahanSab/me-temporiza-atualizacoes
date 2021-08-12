@@ -1,12 +1,17 @@
 import EmailController from './emailController.js'
 import TimerController from './timerController.js'
+import TaskController from './taskController.js'
+import SequenceController from './sequenceController.js'
 
 const mobileEnvironments = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i
 const desktop = '../public/javascripts/desktop.js'
 const mobile = '../public/javascripts/mobile.js'
 
-const emailController = new EmailController()
-const timerController = new TimerController()
+const emailController = new EmailController
+const timerController = new TimerController
+const taskController = new TaskController
+const sequenceController = new SequenceController
+
 const oneSecond = 1000
 let timeFormatted
 let timeout
@@ -23,6 +28,9 @@ window.addEventListener('load', () => {
   document.getElementById('25minutes').addEventListener('click', handlePresetTimeSelection)
   document.getElementById('50minutes').addEventListener('click', handlePresetTimeSelection)
   document.getElementById('alarm').addEventListener('pause', reloadTimer)
+  document.getElementById('hamburguer').addEventListener('click', toggleLeftSideNav)
+  document.getElementById('criar-tarefa').addEventListener('click', createTask)
+  document.getElementById('cadastrar-sequencia').addEventListener('click', createSequence)
   // document.getElementById('message-name').addEventListener('input', element => setEmailName(element.target.value))
   // document.getElementById('message-email').addEventListener('input', element => setEmailOrigin(element.target.value))
   // document.getElementById('message-title').addEventListener('input', element => setEmailTitle(element.target.value))
@@ -138,28 +146,98 @@ function stopAlarm() {
 }
 
 function changeExecuteImage() {
-  document.getElementById('execute').src = timerController.isPlaying ? '../public/sources/pause.png' : '../public/sources/play.png'
+  document.getElementById('execute').src = timerController.isPlaying ? '../public/sources/pause.svg' : '../public/sources/play.svg'
 }
 
-function setEmailName(name) {
-  emailController.name = name
+// function setEmailName(name) {
+//   emailController.name = name
+// }
+
+// function setEmailOrigin(origin) {
+//   emailController.origin = origin
+// }
+
+// function setEmailTitle(title) {
+//   emailController.title = title
+// }
+
+// function setEmailMessage(message) {
+//   emailController.message = message
+// }
+
+// function submitMessage(event) {
+//   event.preventDefault()
+//   emailController.sendEmail()
+// }
+
+function toggleLeftSideNav() {
+  toggleHamburguerButton()
+  const leftSideNav = document.getElementById('left-side-nav')
+  toggleClass(leftSideNav, 'left-side-nav-container--open')
 }
 
-function setEmailOrigin(origin) {
-  emailController.origin = origin
+function toggleHamburguerButton() {
+  const hamburguer = document.getElementById('hamburguer')
+  const hamburguerFirstLine = document.getElementById('hamburguer-first-line')
+  const hamburguerSecondLine = document.getElementById('hamburguer-second-line')
+  const hamburguerThirdLine = document.getElementById('hamburguer-third-line')
+  toggleClass(hamburguer, 'hamburguer-close')
+  toggleClass(hamburguerFirstLine, 'close-button--up-line')
+  toggleClass(hamburguerSecondLine, 'hide')
+  toggleClass(hamburguerThirdLine, 'close-button--down-line')
 }
 
-function setEmailTitle(title) {
-  emailController.title = title
+function toggleClass(element, style) {
+  if (element.classList.contains(style)) element.classList.remove(style)
+  else element.classList.add(style)
 }
 
-function setEmailMessage(message) {
-  emailController.message = message
+function createTask() {
+  taskController.createTask()
 }
 
-function submitMessage(event) {
-  event.preventDefault()
-  emailController.sendEmail()
+function deleteTask() {
+  taskController.deleteTask()
+}
+
+function setTaskTitle(title) {
+  taskController.title = title
+}
+
+function setTaskDescription(description) {
+  taskController.description = description
+}
+
+function setTaskTimer(hours, minutes, seconds) {
+  taskController.setTaskTimer(hours, minutes, seconds)
+}
+
+function subscribeTaskInSequence() {
+  sequenceController.subscribeTaskInSequence(taskController.task)
+}
+
+function createSequence() {
+  sequenceController.createSequence()
+}
+
+function deleteSequence() {
+  sequenceController.deleteTask()
+}
+
+function changeCurrentSequence(currentSequence) {
+  sequenceController.currentSequence = currentSequence
+}
+
+function setSequenceTitle(title) {
+  sequenceController.title = title
+}
+
+function setSequenceDescription(description) {
+  sequenceController.description = description
+}
+
+function setSequenceTasks(tasks) {
+  sequenceController.tasks = tasks
 }
 
 /**

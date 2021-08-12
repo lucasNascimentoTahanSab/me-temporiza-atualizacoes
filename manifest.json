@@ -2,14 +2,14 @@
     "name": "Me Temporiza!",
     "icons": [
         {
-            "src": "public/sources/logomin.png",
-            "type": "image/png",
+            "src": "public/sources/logomin.svg",
+            "type": "image/svg",
             "sizes": "192x192",
             "purpose": "any maskable"
         },
         {
-            "src": "public/sources/logomax.png",
-            "type": "image/png",
+            "src": "public/sources/logomax.svg",
+            "type": "image/svg",
             "sizes": "512x512",
             "purpose": "any maskable"
         }
