@@ -10,8 +10,8 @@
     <meta name="keywords" content="Me Temporiza!, temporizador, temporizado online, pomodoro, técnica pomodoro">
     <meta name="description" content="Está procurando por um temporizador online? Use o Me Temporiza!">
     <meta name="theme-color" content="#BB8FCE">
-    <link rel="apple-touch-icon" href="../public/sources/logomin.png">
-    <link rel="icon" href="../public/sources/logomin.png">
+    <link rel="apple-touch-icon" href="../public/sources/logomin.svg">
+    <link rel="icon" href="../public/sources/logomin.svg">
     <link rel="manifest" href="../manifest.json">
     <link rel="stylesheet" href="../public/stylesheets/index.css">
     <link rel="stylesheet" href="../public/stylesheets/form.css">
@@ -32,6 +32,23 @@
           <button class="form-standard-button no-select clickable" id="signup">Cadastrar</span>
         </div> -->
       </div>
+    </nav>
+    <div class="hamburguer clickable" id="hamburguer">
+      <div class="hamburguer-line" id="hamburguer-first-line"></div>
+      <div class="hamburguer-line" id="hamburguer-second-line"></div>
+      <div class="hamburguer-line" id="hamburguer-third-line"></div>
+    </div>
+    <nav class="left-side-nav-container" id="left-side-nav">
+      <ul class="left-side-nav-options">
+        <li class="left-side-nav--option clickable" id="criar-tarefa">
+          <img class="left-side-nav--option-img" src="./public/sources/pencil.svg">
+          <span>Criar tarefa</span>
+        </li>
+        <li class="left-side-nav--option clickable" id="cadastrar-sequencia">
+          <img class="left-side-nav--option-img" src="./public/sources/sequence.svg">
+          <span>Cadastrar sequência</span>
+        </li>
+      </ul>
     </nav>
     <main class="container" id="slide-show">
       <div class="inner-container dark-page" id="homepage">
@@ -59,9 +76,9 @@
                     <input class="timer-input" maxlength="2" value="00" data-id="timeInput" id="seconds"></input>
                   </div>
                   <div class="timer__content--item">
-                    <img class="clickable no-select" id="execute" src="../public/sources/play.png"
+                    <img class="clickable no-select" id="execute" src="../public/sources/play.svg"
                       alt="Botão para iniciar ou pausar contagem do cronômetro">
-                    <img class="clickable no-select" id="reload" src="../public/sources/reload.png"
+                    <img class="clickable no-select" id="reload" src="../public/sources/reload.svg"
                       alt="Botão para reiniciar contagem do cronômetro">
                   </div>
                 </div>

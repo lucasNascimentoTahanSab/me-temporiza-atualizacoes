@@ -6,11 +6,15 @@ export default class TimerController {
 
 	constructor() {
 		this._timer = new Timer()
-		this._isPlaying = false;
+		this._isPlaying = false
 	}
 
 	get isPlaying() {
 		return this._isPlaying
+	}
+
+	get timer() {
+		return this._timer
 	}
 
 	toggleTimerMode(play) {
