@@ -178,13 +178,10 @@ function toggleLeftSideNav() {
 
 function toggleHamburguerButton() {
   const hamburguer = document.getElementById('hamburguer')
-  const hamburguerFirstLine = document.getElementById('hamburguer-first-line')
-  const hamburguerSecondLine = document.getElementById('hamburguer-second-line')
-  const hamburguerThirdLine = document.getElementById('hamburguer-third-line')
   toggleClass(hamburguer, 'hamburguer-close')
-  toggleClass(hamburguerFirstLine, 'close-button--up-line')
-  toggleClass(hamburguerSecondLine, 'hide')
-  toggleClass(hamburguerThirdLine, 'close-button--down-line')
+  toggleClass(hamburguer.children[0], 'close-button--up-line')
+  toggleClass(hamburguer.children[1], 'hide')
+  toggleClass(hamburguer.children[2], 'close-button--down-line')
 }
 
 function toggleClass(element, style) {
