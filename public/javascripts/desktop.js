@@ -1,12 +1,12 @@
 import { selectTimer } from './index.js'
 
-const slides = []
+const slides = [];
 
-	(() => {
-		setUpEvents()
-		defineSlides()
-		defineCurrentSlide()
-	})()
+(() => {
+	setUpEvents()
+	defineSlides()
+	defineCurrentSlide()
+})()
 
 window.addEventListener('resize', manageWindowResize)
 

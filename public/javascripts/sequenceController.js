@@ -13,28 +13,28 @@ export default class SequenceController {
    * @param {number} currentSequence
    */
   set currentSequence(currentSequence) {
-    this.currentSequence = currentSequence
+    this._currentSequence = currentSequence
   }
 
   /**
    * @param {string} title
    */
   set title(title) {
-    if (this._sequences.length === 0 || this._sequences.length - 1 < this.currentSequence) return
-    this._sequences[this.currentSequence].title = title
+    if (this._sequences.length === 0 || this._sequences.length - 1 < this._currentSequence) return
+    this._sequences[this._currentSequence].title = title
   }
 
   /**
    * @param {string} description
    */
   set description(description) {
-    if (this._sequences.length === 0 || this._sequences.length - 1 < this.currentSequence) return
-    this._sequences[this.currentSequence].description = description
+    if (this._sequences.length === 0 || this._sequences.length - 1 < this._currentSequence) return
+    this._sequences[this._currentSequence].description = description
   }
 
   get sequence() {
-    if (this._sequences.length === 0 || this._sequences.length - 1 < this.currentSequence) return
-    return this.sequence[this.currentSequence]
+    if (this._sequences.length === 0 || this._sequences.length - 1 < this._currentSequence) return
+    return this.sequence[this._currentSequence]
   }
 
   createSequence() {
