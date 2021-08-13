@@ -250,4 +250,4 @@ function setUpEnvironmentWithModule(module) {
   head.appendChild(script)
 }
 
-export { selectTimer }
+export default { selectTimer }

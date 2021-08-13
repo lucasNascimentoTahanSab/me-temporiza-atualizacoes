@@ -4,7 +4,8 @@
   "description": "This is a timer based application aiming to simplify every day tasks, making it easier to organize them by automatically controlling the time spent in each one.",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon ./bin/www"
+    "start": "nodemon ./bin/www",
+    "build": "webpack"
   },
   "repository": {
     "type": "git",
@@ -19,5 +20,19 @@
   "bugs": {
     "url": "https://github.com/nasciontem/me-temporiza/issues"
   },
-  "homepage": "https://github.com/nasciontem/me-temporiza#readme"
+  "homepage": "https://github.com/nasciontem/me-temporiza#readme",
+  "devDependencies": {
+    "@babel/core": "^7.15.0",
+    "@babel/preset-env": "^7.15.0",
+    "@babel/preset-react": "^7.14.5",
+    "babel-loader": "^8.2.2",
+    "css-loader": "^6.2.0",
+    "style-loader": "^3.2.1",
+    "webpack": "^5.50.0",
+    "webpack-cli": "^4.7.2"
+  },
+  "dependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  }
 }
