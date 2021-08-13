@@ -364,6 +364,7 @@ button:active {
     position: fixed;
     box-shadow: none;
     transition: 0.5s;
+    height: 3.3rem;
   }
 
   .nav-container__login-buttons {
@@ -385,14 +386,14 @@ button:active {
   }
 
   .hamburguer {
-    top: 1.25rem;
-    left: 1.25rem;
-    width: 2rem;
-    height: 2.5rem;
+    top: 0;
+    left: 0;
+    width: 3.3rem;
+    height: 3.3rem;
   }
   
   .hamburguer-close {
-    top: 1rem;
+    top: 0;
     left: 16.25rem;
   }
 
