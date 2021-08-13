@@ -1,4 +1,4 @@
-import { selectTimer } from './index.js'
+const selectTimer = window.bundleExport.selectTimer
 
 const slides = [];
 
