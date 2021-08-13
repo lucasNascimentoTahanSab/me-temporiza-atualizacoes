@@ -112,7 +112,7 @@ button:active {
 
 .left-side-nav-container {
   position: fixed;
-  z-index: 5;
+  z-index: 10;
   left: -19.25rem;
   width: 19.25rem;
   height: 100vh;
@@ -222,7 +222,7 @@ button:active {
   justify-content: center;
   flex-direction: column;
   position: fixed;
-  z-index: 10;
+  z-index: 15;
   top: 1.25rem;
   left: 1.25rem;
   width: 2rem;

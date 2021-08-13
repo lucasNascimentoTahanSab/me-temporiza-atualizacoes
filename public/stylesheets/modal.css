@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
+:root {
+  --color-selected: #D7BDE2;
+  --color-call-to-action: #741384;
+  --color-background-dark: #453E69;
+  --color-background-light: #BB8FCE;
+  --color-background-lighter: #E8DAEF;
+
+  --font-family-title: 'Lobster', cursive;
+  --font-family-text: 'Lato', sans-serif;
+
+  --font-size-nav-title: 2.6rem;
+  --font-size-nav-text: .9rem;
+  --font-size-title: 3rem;
+  --font-size-text: 1rem;
+  --font-size-text-timer: 1.4rem;
+  --font-size-tiny-text: .75rem;
+  
+  --font-weight-regular: 500;
+  --font-weight-bold: 600;
+  
+  --line-height-title: 1;
+  --line-height-text: 1.4;
+  
+  --gap-standard: 8%;
+  --gap-form: 2%;
+  --gap-form-tiny: 1%;
+}
+
+.modal-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  z-index: 20;
+  background-color: rgba(0, 0, 0, .2);
+  width: 100%;
+  height: 100%;
+}
+
+.modal-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 37.5rem;
+  height: 37.5rem;
+  border-radius: .3125rem;
+  background-color: var(--color-background-lighter);
+}
+
+.modal-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 2rem;
+  height: 2rem;
+  cursor: pointer;
+}
+
+.modal-close--up-line {
+  position: absolute;
+  width: 1rem;
+  border: .01rem solid var(--color-background-dark);
+  background-color: var(--color-background-dark);
+  transform: rotate(45deg);
+}
+
+.modal-close--down-line {
+  position: absolute;
+  width: 1rem;
+  border: .01rem solid var(--color-background-dark);
+  background-color: var(--color-background-dark);
+  transform: rotate(135deg);
+}
+
+.modal-content {
+  position: relative;
+  width: 35rem;
+  height: 35rem;
+  color: var(--color-background-dark);
+  text-align: center;
+}
+
+.modal-form {
+  overflow-y: auto;
+}
+
+.modal-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding-inline: 8.75rem;
+  margin-bottom: 2.5rem;
+}

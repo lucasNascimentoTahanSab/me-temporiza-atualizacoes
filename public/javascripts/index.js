@@ -1,7 +1,20 @@
+import React from 'react'
+import ReactDOM from 'react-dom'
 import EmailController from './emailController.js'
 import TimerController from './timerController.js'
 import TaskController from './taskController.js'
 import SequenceController from './sequenceController.js'
+import Modal from '../components/modal'
+
+ReactDOM.render(
+  <Modal
+    title="Qual a boa?"
+    firstparagraph="Separar suas atividades em tarefas menores pode te ajudar"
+    secondparagraph="a gerenciar melhor seu tempo!"
+    buttonname="Salvar"
+  />,
+  document.getElementById('modal')
+)
 
 const mobileEnvironments = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i
 const desktop = '../public/javascripts/desktop.js'
