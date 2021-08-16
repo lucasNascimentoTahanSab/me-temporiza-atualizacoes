@@ -1,11 +1,10 @@
-import React, { Component } from 'react'
+import React from 'react'
 import '../stylesheets/modal.css'
 import '../stylesheets/form.css'
 
-export default class Modal extends Component {
+export default class Modal extends React.Component {
   constructor(props) {
     super(props)
-    this.state = { isOpen: true }
   }
 
   render() {
