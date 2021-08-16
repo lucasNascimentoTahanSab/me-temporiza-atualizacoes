@@ -96,6 +96,17 @@
   resize: none;
 }
 
+.task-modal {
+  opacity: 1;
+  pointer-events: all;
+  transition: .5s;
+}
+
+.task-modal--hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
 @media (max-width: 52.5rem) {
   img {
     max-width: 70%;
