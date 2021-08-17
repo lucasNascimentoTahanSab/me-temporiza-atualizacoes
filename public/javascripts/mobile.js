@@ -4,16 +4,20 @@ const selectTimer = window.bundleExport.selectTimer;
 	setUpEvents()
 })()
 
-window.addEventListener('click', formatTimeInputs)
-window.addEventListener('scroll', manageNavbarPresentation)
-
 function setUpEvents() {
+	window.addEventListener('click', formatTimeInputs)
+	window.addEventListener('scroll', manageNavbarPresentation)
 	document.getElementById('back-to-home').addEventListener('click', goBackToHome)
 	$('#hours').change(handleCustomTimeSelection)
 	$('#minutes').change(handleCustomTimeSelection)
 	$('#seconds').change(handleCustomTimeSelection)
 }
 
+/**
+ * Method responsible for, when clicking outside
+ * the time inputs, updating them to 2 digits when
+ * its length is minor.
+ */
 function formatTimeInputs(event) {
 	if (event.target.id === 'hours' || event.target.id === 'minutes' || event.target.id === 'seconds') return
 
@@ -36,6 +40,11 @@ function goBackToHome() {
 	})
 }
 
+/**
+ * Method responsible for showing up top navigation
+ * bar when current scroll position is after timer initial
+ * position and hiding it otherwise.
+ */
 function manageNavbarPresentation(event) {
 	const timer = document.getElementById('timer')
 	const currentScrollPosition = event.currentTarget.scrollY

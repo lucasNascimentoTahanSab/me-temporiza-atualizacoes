@@ -1,17 +1,15 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import EmailController from './emailController.js'
+import Modal from '../components/modal'
+import TaskModal from '../components/taskModal'
 import TimerController from './timerController.js'
 import TaskController from './taskController.js'
 import SequenceController from './sequenceController.js'
-import Modal from '../components/modal'
-import TaskModal from '../components/taskModal'
 
 const mobileEnvironments = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i
-const desktop = '../public/javascripts/desktop.js'
-const mobile = '../public/javascripts/mobile.js'
+const desktop = './public/javascripts/desktop.js'
+const mobile = './public/javascripts/mobile.js'
 
-const emailController = new EmailController
 const timerController = new TimerController
 const taskController = new TaskController
 const sequenceController = new SequenceController
@@ -33,17 +31,17 @@ window.addEventListener('load', () => {
   document.getElementById('50minutes').addEventListener('click', handlePresetTimeSelection)
   document.getElementById('alarm').addEventListener('pause', reloadTimer)
   document.getElementById('hamburguer').addEventListener('click', toggleLeftSideNav)
-  document.getElementById('criar-tarefa').addEventListener('click', openTaskModal)
-  document.getElementById('cadastrar-sequencia').addEventListener('click', createSequence)
-  // document.getElementById('message-name').addEventListener('input', element => setEmailName(element.target.value))
-  // document.getElementById('message-email').addEventListener('input', element => setEmailOrigin(element.target.value))
-  // document.getElementById('message-title').addEventListener('input', element => setEmailTitle(element.target.value))
-  // document.getElementById('message-body').addEventListener('input', element => setEmailMessage(element.target.value))
-  // document.getElementById('submit-message').addEventListener('click', submitMessage)
+  document.getElementById('create-task').addEventListener('click', openTaskModal)
+  document.getElementById('create-sequence').addEventListener('click', createSequence)
   if (mobileEnvironments.test(navigator.userAgent)) setUpEnvironmentWithModule(mobile)
   else setUpEnvironmentWithModule(desktop)
 })
 
+/**
+ * Method responsible for the preset timer
+ * selection. It splits the time in the options
+ * dataset and passes it to the selectTimer method.
+ */
 function handlePresetTimeSelection(event) {
   const timeSplitted = event.target.dataset.time.split(':')
   selectTimer(timeSplitted[0], timeSplitted[1], timeSplitted[2])
@@ -51,6 +49,12 @@ function handlePresetTimeSelection(event) {
   reloadTimer()
 }
 
+/**
+ * Method responsible for the timer selection
+ * based on hours, minutes and seconds selected.
+ * Those three arguments are then attributed to the 
+ * timer in timerController.
+ */
 function selectTimer(hours, minutes, seconds) {
   if (hours > 23) hours = 23
   if (minutes > 59) minutes = 59
@@ -60,6 +64,12 @@ function selectTimer(hours, minutes, seconds) {
   updatePresetTimes()
 }
 
+/**
+ * Method responsible for managing the timer mode 
+ * changes during user DOM manipulation. It executes 
+ * when playing or pausing (when alarm is playing or not) 
+ * the timer execution.
+ */
 function toggleTimerMode() {
   if (timerController.isPlaying) return toggleTimerModeWhenPlaying()
   if (alarmIsPlaying()) return toggleTimerModeWhenAlarmPlaying()
@@ -93,14 +103,19 @@ function reloadTimer() {
   stopAlarm()
 }
 
-function stopTimer() {
-  clearTimeout(timeout)
-}
-
 function startTimer() {
   timeout = setTimeout(countDown, oneSecond)
 }
 
+function stopTimer() {
+  clearTimeout(timeout)
+}
+
+/**
+ * Method responsible for the timer count down
+ * while there's still time to count. When it ends,
+ * the timer reloads and the alarm plays.
+ */
 function countDown() {
   updateTimer()
   if (!timerController.timeIsOver()) {
@@ -112,6 +127,10 @@ function countDown() {
   playAlarm()
 }
 
+/**
+ * Method responsible for keeping the DOM timer
+ * up to date with the internal timer calculation.
+ */
 function updateTimer() {
   timerController.updateTimer()
   changeTimerValueOnScreen()
@@ -125,6 +144,11 @@ function changeTimerValueOnScreen() {
   document.getElementById('seconds').value = timeSplitted[2]
 }
 
+/**
+ * Method responsible por updating the preset timer
+ * options when selected, hilightning the selected option
+ * and removing the highlight from the others.
+ */
 function updatePresetTimes() {
   const optionItems = document.querySelectorAll('.timer__options--item')
   optionItems.forEach(option => {
@@ -153,33 +177,21 @@ function changeExecuteImage() {
   document.getElementById('execute').src = timerController.isPlaying ? '../public/sources/pause.svg' : '../public/sources/play.svg'
 }
 
-// function setEmailName(name) {
-//   emailController.name = name
-// }
-
-// function setEmailOrigin(origin) {
-//   emailController.origin = origin
-// }
-
-// function setEmailTitle(title) {
-//   emailController.title = title
-// }
-
-// function setEmailMessage(message) {
-//   emailController.message = message
-// }
-
-// function submitMessage(event) {
-//   event.preventDefault()
-//   emailController.sendEmail()
-// }
-
+/**
+ * Method responsible for the left side 
+ * navigation bar opening and closing.
+ */
 function toggleLeftSideNav() {
   toggleHamburguerButton()
+
   const leftSideNav = document.getElementById('left-side-nav')
   toggleClass(leftSideNav, 'left-side-nav-container--open')
 }
 
+/**
+ * Method responsible for the transition
+ * from the hamburguer to the close button.
+ */
 function toggleHamburguerButton() {
   const hamburguer = document.getElementById('hamburguer')
   toggleClass(hamburguer, 'hamburguer-close')
@@ -188,6 +200,11 @@ function toggleHamburguerButton() {
   toggleClass(hamburguer.children[2], 'close-button--down-line')
 }
 
+/**
+ * Method responsible for generically removing
+ * or inserting a certain style (CSS class) from
+ * a DOM element.
+ */
 function toggleClass(element, style) {
   if (element.classList.contains(style)) element.classList.remove(style)
   else element.classList.add(style)
@@ -224,44 +241,8 @@ function deleteTask() {
   taskController.deleteTask()
 }
 
-function setTaskTitle(title) {
-  taskController.title = title
-}
-
-function setTaskDescription(description) {
-  taskController.description = description
-}
-
-function setTaskTimer(hours, minutes, seconds) {
-  taskController.setTaskTimer(hours, minutes, seconds)
-}
-
-function subscribeTaskInSequence() {
-  sequenceController.subscribeTaskInSequence(taskController.task)
-}
-
 function createSequence() {
   sequenceController.createSequence()
-}
-
-function deleteSequence() {
-  sequenceController.deleteTask()
-}
-
-function changeCurrentSequence(currentSequence) {
-  sequenceController.currentSequence = currentSequence
-}
-
-function setSequenceTitle(title) {
-  sequenceController.title = title
-}
-
-function setSequenceDescription(description) {
-  sequenceController.description = description
-}
-
-function setSequenceTasks(tasks) {
-  sequenceController.tasks = tasks
 }
 
 /**

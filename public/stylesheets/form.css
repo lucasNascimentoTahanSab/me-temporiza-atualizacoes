@@ -11,20 +11,6 @@
   --font-family-text: 'Lato', sans-serif;
 
   --font-weight-bold: 600;
-
-  --gap-form: 2%;
-}
-
-.central-content__form-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: var(--gap-form);
-  flex: 2;
-  height: 100%;
-  width: 100%;
-  text-align: center;
 }
 
 .form-input {
@@ -41,22 +27,6 @@
   font-size: var(--font-size-text);
 }
 
-.form-input--row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--gap-form);
-  width: 100%;
-}
-
-.form-element {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  width: 100%;
-  height: fit-content;
-}
-
 .form-button {
   cursor: pointer;
   padding: .5rem 1rem;
@@ -71,48 +41,12 @@
   width: 80%;
 }
 
-.form-standard-button {
-  padding: .5rem 1rem;
-  border-radius: 5px;
-  border-style: none;
-  font-family: 'Lato', sans-serif;
-  font-weight: var(--font-weight-bold);
-  background-color: var(--color-background-light);
-  color: var(--color-call-to-action);
-  box-shadow: 0 0 1rem .1rem rgba(0, 0, 0, .2);
-  text-decoration: none;
-}
-
 .form-button:visited {
   color: var(--color-call-to-action);
 }
 
-.form-anchor-button {
-  text-decoration: none;
-  font-weight: var(--font-weight-bold);
-}
-
-.form-anchor-button:visited {
-  color: inherit;
-}
-
-.form-anchor-button:active {
-  box-shadow: none;
-}
-
 @media (max-width: 52.5rem) {
-  .form-element {
-    margin-top: 1rem;
-  }
-
   .form-button {
     margin-top: 2rem;
-  }
-}
-
-@media (max-width: 26rem) {
-  .form-input--row {
-    flex-direction: column;
-    align-items: flex-start;
   }
 }

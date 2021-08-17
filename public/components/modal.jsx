@@ -3,6 +3,10 @@ import '../stylesheets/modal.css'
 import '../stylesheets/form.css'
 import '../stylesheets/generalStructure.css'
 
+/**
+ * Class responsible for keeping a generic modal
+ * structure for further use.
+ */
 export default class Modal extends React.Component {
   constructor(props) {
     super(props)
