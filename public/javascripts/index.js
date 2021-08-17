@@ -5,6 +5,7 @@ import TimerController from './timerController.js'
 import TaskController from './taskController.js'
 import SequenceController from './sequenceController.js'
 import Modal from '../components/modal'
+import TaskModal from '../components/taskModal'
 
 const mobileEnvironments = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i
 const desktop = '../public/javascripts/desktop.js'
@@ -202,7 +203,9 @@ function openTaskModal() {
       secondParagraph="a gerenciar melhor seu tempo!"
       buttonName="Salvar"
       closeModal={closeTaskModal.bind(this)}
-    />,
+    >
+      <TaskModal />
+    </Modal>,
     document.getElementById('task-modal')
   )
   toggleClass(document.getElementById('task-modal'), 'task-modal--hidden')

@@ -16,12 +16,12 @@ export default class Modal extends React.Component {
             <div className="modal-close--down-line"></div>
           </div>
           <section className="modal-content">
-            <header className="modal-title">
+            <header>
               <h2>{this.props.title}</h2>
               <p>{this.props.firstParagraph}</p>
               <p>{this.props.secondParagraph}</p>
             </header>
-            <div className="modal-form"></div>
+            {this.props.children}
             <footer className="modal-footer">
               <button className="form-button">{this.props.buttonName}</button>
             </footer>

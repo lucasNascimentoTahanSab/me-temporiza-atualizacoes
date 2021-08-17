@@ -8,6 +8,8 @@
 
   --font-size-text: 1rem;
 
+  --font-family-text: 'Lato', sans-serif;
+
   --font-weight-bold: 600;
 
   --gap-form: 2%;
@@ -35,6 +37,8 @@
   text-align: left;
   background-color: #E8DAEF;
   color: var(--color-background-dark);
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-text);
 }
 
 .form-input--row {
@@ -64,7 +68,7 @@
   color: var(--color-call-to-action);
   box-shadow: 0 0 1rem .1rem rgba(0, 0, 0, .2);
   text-decoration: none;
-  width: 100%;
+  width: 80%;
 }
 
 .form-standard-button {

@@ -202,6 +202,74 @@ button:active {
   padding: 0 0 3%;
 }
 
+.timer {
+  width: 15rem;
+  color: var(--color-background-dark);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-text-timer);
+}
+
+.timer__options {
+  display: flex;
+  width: 70%;
+  overflow: hidden;
+  border-radius: 1rem 1rem 0 0;
+  background-color: var(--color-background-lighter);
+}
+
+.timer__options--item {
+  width: 100%;
+  padding: 5%;
+  transition: 0.5s;
+}
+
+.timer__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 0.9rem;
+  border-radius: 0 1rem 1rem;
+  box-shadow: 0 0 1rem .1rem rgba(0, 0, 0, .2);
+  background-color: var(--color-background-light);
+}
+
+.timer__content--item {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin: 1rem;
+  width: 100%;
+}
+
+.timer__login-buttons {
+  display: none;
+}
+
+.timer-input {
+  width: 100%;
+  padding: .5rem;
+  outline: none;
+  border-radius: 10px;
+  border-style: none;
+  text-align: left;
+  background-color: #E8DAEF;
+  color: #273746;
+  text-align: center;
+  width: calc(var(--font-size-text-timer) * 2);
+  caret-color: var(--color-background-dark);
+  color: var(--color-background-dark);
+  background-color: var(--color-selected);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-text-timer);
+  font-family: var(--font-family-text);
+}
+
+.timer-colon {
+  margin-inline: .01rem;
+}
+
 .dark-page {
   background-color: var(--color-background-dark);
   color: var(--color-background-lighter);
@@ -358,6 +426,28 @@ button:active {
     --font-size-title: 1.75rem;
     --font-size-text-timer: 1.3rem;
     --font-size-text: 0.95rem;
+  }
+  
+  .timer {
+    margin: 2rem;
+    width: 11rem;
+  }
+
+  .timer__options {
+    width: 100%;
+  }
+
+  .timer__content {
+    border-radius: 0 0 1rem 1rem;
+  }
+
+  .timer__login-buttons {
+    display: block;
+    width: 100%;
+  }
+
+  .timer__login-buttons > * {
+    margin: calc(var(--gap-standard) / 4);
   }
 
   .nav-container {

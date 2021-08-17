@@ -2,31 +2,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
 
 :root {
-  --color-selected: #D7BDE2;
-  --color-call-to-action: #741384;
   --color-background-dark: #453E69;
-  --color-background-light: #BB8FCE;
   --color-background-lighter: #E8DAEF;
-
-  --font-family-title: 'Lobster', cursive;
-  --font-family-text: 'Lato', sans-serif;
-
-  --font-size-nav-title: 2.6rem;
-  --font-size-nav-text: .9rem;
-  --font-size-title: 3rem;
-  --font-size-text: 1rem;
-  --font-size-text-timer: 1.4rem;
-  --font-size-tiny-text: .75rem;
-  
-  --font-weight-regular: 500;
-  --font-weight-bold: 600;
-  
-  --line-height-title: 1;
-  --line-height-text: 1.4;
-  
-  --gap-standard: 8%;
-  --gap-form: 2%;
-  --gap-form-tiny: 1%;
 }
 
 .modal-container {
@@ -46,7 +23,7 @@
   justify-content: center;
   align-items: center;
   position: relative;
-  width: 37.5rem;
+  width: 30rem;
   height: 37.5rem;
   border-radius: .3125rem;
   background-color: var(--color-background-lighter);
@@ -83,14 +60,10 @@
 
 .modal-content {
   position: relative;
-  width: 35rem;
-  height: 35rem;
+  width: 90%;
+  height: 90%;
   color: var(--color-background-dark);
   text-align: center;
-}
-
-.modal-form {
-  overflow-y: auto;
 }
 
 .modal-footer {
@@ -100,6 +73,5 @@
   position: absolute;
   bottom: 0;
   width: 100%;
-  padding-inline: 8.75rem;
   margin-bottom: 2.5rem;
 }
