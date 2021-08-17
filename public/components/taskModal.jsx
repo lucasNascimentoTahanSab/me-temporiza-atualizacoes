@@ -3,6 +3,11 @@ import '../stylesheets/taskModal.css'
 import '../stylesheets/generalStructure.css'
 import '../stylesheets/form.css'
 
+/**
+ * Component responsible for keeping the task creater
+ * modal struture for use as the modal component
+ * content.
+ */
 export default class TaskModal extends React.Component {
   constructor(props) {
     super(props)
