@@ -16,7 +16,7 @@
   height: 60%;
   overflow-x: hidden;
   overflow-y: auto;
-  margin-block: 1rem;
+  margin: 1rem 0;
 }
 
 .task-modal__field {
@@ -30,15 +30,14 @@
 .task-modal__timer {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
   align-items: center;
   width: 40%;
 }
 
 .task-modal__timer--container {
+  width: 11rem;
+  margin: 2rem;
   color: var(--color-background-dark);
   font-weight: var(--font-weight-bold);
   font-size: var(--font-size-text-timer);
-  margin: 2rem;
-  width: 11rem;
 }
