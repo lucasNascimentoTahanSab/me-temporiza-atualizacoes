@@ -8,9 +8,9 @@ const slides = [];
 	defineCurrentSlide()
 })()
 
-window.addEventListener('resize', manageWindowResize)
 
 function setUpEvents() {
+	window.addEventListener('resize', manageWindowResize)
 	document.getElementById('back-to-home').addEventListener('click', goBackToHome)
 	document.getElementById('left-last').addEventListener('click', goToLast)
 	document.getElementById('right-second').addEventListener('click', goToNext)
@@ -19,8 +19,6 @@ function setUpEvents() {
 	document.getElementById('left-second').addEventListener('click', goToLast)
 	document.getElementById('right-fourth').addEventListener('click', goToNext)
 	document.getElementById('left-third').addEventListener('click', goToLast)
-	// document.getElementById('right-last').addEventListener('click', goToNext)
-	// document.getElementById('left-fourth').addEventListener('click', goToLast)
 	$('#hours').keypress(handleCustomTimeSelection)
 	$('#minutes').keypress(handleCustomTimeSelection)
 	$('#seconds').keypress(handleCustomTimeSelection)
@@ -29,6 +27,11 @@ function setUpEvents() {
 	$('#seconds').keydown(handleBackspacePressed)
 }
 
+/**
+ * Method responsible for custom time selection in 
+ * desktop, updating the time input without the need
+ * to backspacing.
+ */
 function handleCustomTimeSelection(event) {
 	if (event.key < '0' || event.key > '9') return false
 
@@ -38,9 +41,10 @@ function handleCustomTimeSelection(event) {
 }
 
 /**
- * Method responsible for handling backspacing
- * in custom time editing. "event.preventDefault()" 
- * is needed here to avoid unexpected behavior.
+ * Method responsible for handling backspacing in custom time 
+ * editing. Key code 8 is the correspondent backspace key code when 
+ * handling key down and "event.preventDefault()" is needed here to 
+ * avoid unexpected behavior.
  */
 function handleBackspacePressed(event) {
 	if (event.keyCode !== 8) return true
@@ -51,6 +55,11 @@ function handleBackspacePressed(event) {
 	selectTimer(document.getElementById('hours').value, document.getElementById('minutes').value, document.getElementById('seconds').value)
 }
 
+/**
+ * Method responsible for updating the slides position
+ * in the scroll width while window resizes (until it get
+ * bellow 52.5rem width).
+ */
 function manageWindowResize() {
 	if (window.matchMedia('(max-width: 52.5rem)').matches) {
 		manageTitlePresentation()
@@ -62,6 +71,11 @@ function manageWindowResize() {
 	slideShow.scrollLeft = slides[getCurrentSlidePosition()].position
 }
 
+/**
+ * Method responsible for getting the user back to
+ * the home slide, updating the current slide to 0
+ * and hiding the site title.
+ */
 function goBackToHome() {
 	const slideShow = document.getElementById('slide-show')
 	slideShow.scrollLeft = 0
@@ -69,6 +83,11 @@ function goBackToHome() {
 	manageTitlePresentation()
 }
 
+/**
+ * Method responsible for getting the user to the
+ * next subscribed slide (if it exists), defining it
+ * as the current slide and managing title presentation.
+ */
 function goToNext() {
 	const slideShow = document.getElementById('slide-show')
 	const currentSlidePosition = getCurrentSlidePosition()
@@ -78,6 +97,11 @@ function goToNext() {
 	manageTitlePresentation()
 }
 
+/**
+ * Method responsible for getting the user to the
+ * last subscribed slide (if it exists), defining it
+ * as the current slide and managing title presentation.
+ */
 function goToLast() {
 	const slideShow = document.getElementById('slide-show')
 	const currentSlidePosition = getCurrentSlidePosition()
@@ -87,6 +111,12 @@ function goToLast() {
 	manageTitlePresentation()
 }
 
+/**
+ * Method responsible for subscribing the defined slides
+ * at the first place (all elements anotated with the inner-container
+ * class) to keep track of slide size, current slide and the position of
+ * it in the scroll width.
+ */
 function defineSlides() {
 	const slideShow = Array.from(document.getElementsByClassName('inner-container'))
 	const slideSize = slideShow[0].clientWidth + (2 * slideShow[0].offsetLeft)
@@ -100,16 +130,16 @@ function defineSlides() {
 }
 
 function defineCurrentSlide(scrollLeft = 0) {
-	for (const slide of slides) {
-		if (slide.position !== scrollLeft) {
-			slide.current = false
-		} else {
-			slide.current = true
-			break
-		}
-	}
+	for (const slide of slides)
+		slide.current = slide.position === scrollLeft
 }
 
+/**
+ * Method responsible for the slide size and position
+ * update. The slide size is calculated by adding to the
+ * slide width the double of the distance of the slide to
+ * the screen left side (its margin).
+ */
 function updateSlides() {
 	const slideShow = document.getElementsByClassName('inner-container')
 	const slideSize = slideShow[0].clientWidth + (2 * slideShow[0].offsetLeft)
@@ -128,6 +158,12 @@ function getCurrentSlidePosition() {
 			return position
 }
 
+/**
+ * Method responsible for hiding the site title 
+ * when the window width in minor than 52.5rem or
+ * when the user is not in home slide, or showing it
+ * otherwise.
+ */
 function manageTitlePresentation() {
 	const navbarTitle = document.getElementById('back-to-home')
 	if (window.matchMedia('(max-width: 52.5rem)').matches) {
