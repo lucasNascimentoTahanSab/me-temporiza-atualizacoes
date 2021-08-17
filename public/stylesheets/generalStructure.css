@@ -6,6 +6,7 @@
   --color-background-dark: #453E69;
   --color-background-light: #BB8FCE;
   --color-background-lighter: #E8DAEF;
+  --color-scrollbar-background: #ccc;
 
   --font-family-title: 'Lobster', cursive;
   --font-family-text: 'Lato', sans-serif;
@@ -38,6 +39,7 @@ body {
   font-size: var(--font-size-text);
   font-family: var(--font-family-text);
   background-color: var(--color-background-dark);
+  overflow: overlay;
 }
 
 h1,
@@ -402,6 +404,19 @@ img {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+}
+
+::-webkit-scrollbar {
+  width: .5rem;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: .3125rem;
+  background-color: var(--color-scrollbar-background);
 }
 
 @media (max-width: 52.5rem) {
