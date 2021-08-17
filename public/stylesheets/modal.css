@@ -7,22 +7,22 @@
 }
 
 .modal-container {
+  position: fixed;
+  z-index: 20;
   display: flex;
   align-items: center;
   justify-content: center;
-  position: fixed;
-  z-index: 20;
-  background-color: rgba(0, 0, 0, .2);
   width: 100%;
   height: 100%;
+  background-color: rgba(0, 0, 0, .2);
 }
 
 .modal-body {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  position: relative;
   width: 30rem;
   height: 37.5rem;
   border-radius: .3125rem;
@@ -30,32 +30,16 @@
 }
 
 .modal-close {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
   position: absolute;
   top: 0;
   right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   width: 2rem;
   height: 2rem;
   cursor: pointer;
-}
-
-.modal-close--up-line {
-  position: absolute;
-  width: 1rem;
-  border: .01rem solid var(--color-background-dark);
-  background-color: var(--color-background-dark);
-  transform: rotate(45deg);
-}
-
-.modal-close--down-line {
-  position: absolute;
-  width: 1rem;
-  border: .01rem solid var(--color-background-dark);
-  background-color: var(--color-background-dark);
-  transform: rotate(135deg);
 }
 
 .modal-content {
@@ -67,11 +51,11 @@
 }
 
 .modal-footer {
+  position: absolute;
+  bottom: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  position: absolute;
-  bottom: 0;
   width: 100%;
   margin-bottom: 2.5rem;
 }
