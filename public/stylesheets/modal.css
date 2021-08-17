@@ -2,6 +2,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
 
 :root {
+  --modal-font-size-title: 1.75rem;
+
   --color-background-dark: #453E69;
   --color-background-lighter: #E8DAEF;
 }
@@ -58,4 +60,8 @@
   justify-content: center;
   width: 100%;
   margin-bottom: 2.5rem;
+}
+
+.modal-title {
+  font-size: var(--modal-font-size-title);
 }

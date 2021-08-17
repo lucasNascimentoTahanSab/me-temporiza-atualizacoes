@@ -6,6 +6,7 @@
   --color-background-dark: #453E69;
   --color-background-light: #BB8FCE;
   --color-background-lighter: #E8DAEF;
+  --color-scrollbar-background: #ccc;
 
   --font-family-title: 'Lobster', cursive;
   --font-family-text: 'Lato', sans-serif;
@@ -13,7 +14,7 @@
   --font-size-nav-title: 2.6rem;
   --font-size-nav-text: .9rem;
   --font-size-title: 3rem;
-  --font-size-text: 1rem;
+  --font-size-text: 0.95rem;
   --font-size-text-timer: 1.4rem;
   --font-size-tiny-text: .75rem;
   
@@ -38,6 +39,7 @@ body {
   font-size: var(--font-size-text);
   font-family: var(--font-family-text);
   background-color: var(--color-background-dark);
+  overflow: overlay;
 }
 
 h1,
@@ -404,12 +406,24 @@ img {
   user-select: none;
 }
 
+::-webkit-scrollbar {
+  width: .5rem;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: .3125rem;
+  background-color: var(--color-scrollbar-background);
+}
+
 @media (max-width: 52.5rem) {
   :root {
     --font-size-nav-title: 1.65rem;
     --font-size-title: 1.75rem;
     --font-size-text-timer: 1.3rem;
-    --font-size-text: 0.95rem;
   }
   
   img {

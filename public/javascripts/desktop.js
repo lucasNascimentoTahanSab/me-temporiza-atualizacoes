@@ -8,7 +8,6 @@ const slides = [];
 	defineCurrentSlide()
 })()
 
-
 function setUpEvents() {
 	window.addEventListener('resize', manageWindowResize)
 	document.getElementById('back-to-home').addEventListener('click', goBackToHome)
