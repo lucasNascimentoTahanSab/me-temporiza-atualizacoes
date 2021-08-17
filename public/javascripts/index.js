@@ -1,7 +1,11 @@
+import React from 'react'
+import ReactDOM from 'react-dom'
 import EmailController from './emailController.js'
 import TimerController from './timerController.js'
 import TaskController from './taskController.js'
 import SequenceController from './sequenceController.js'
+import Modal from '../components/modal'
+import TaskModal from '../components/taskModal'
 
 const mobileEnvironments = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i
 const desktop = '../public/javascripts/desktop.js'
@@ -29,7 +33,7 @@ window.addEventListener('load', () => {
   document.getElementById('50minutes').addEventListener('click', handlePresetTimeSelection)
   document.getElementById('alarm').addEventListener('pause', reloadTimer)
   document.getElementById('hamburguer').addEventListener('click', toggleLeftSideNav)
-  document.getElementById('criar-tarefa').addEventListener('click', createTask)
+  document.getElementById('criar-tarefa').addEventListener('click', openTaskModal)
   document.getElementById('cadastrar-sequencia').addEventListener('click', createSequence)
   // document.getElementById('message-name').addEventListener('input', element => setEmailName(element.target.value))
   // document.getElementById('message-email').addEventListener('input', element => setEmailOrigin(element.target.value))
@@ -187,6 +191,29 @@ function toggleHamburguerButton() {
 function toggleClass(element, style) {
   if (element.classList.contains(style)) element.classList.remove(style)
   else element.classList.add(style)
+}
+
+function openTaskModal() {
+  createTask()
+  toggleLeftSideNav()
+  ReactDOM.render(
+    <Modal
+      title="Qual a boa?"
+      firstParagraph="Separar suas atividades em tarefas menores pode te ajudar"
+      secondParagraph="a gerenciar melhor seu tempo!"
+      buttonName="Salvar"
+      closeModal={closeTaskModal.bind(this)}
+    >
+      <TaskModal />
+    </Modal>,
+    document.getElementById('task-modal')
+  )
+  toggleClass(document.getElementById('task-modal'), 'task-modal--hidden')
+}
+
+function closeTaskModal() {
+  deleteTask()
+  toggleClass(document.getElementById('task-modal'), 'task-modal--hidden')
 }
 
 function createTask() {

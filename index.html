@@ -10,20 +10,21 @@
     <meta name="keywords" content="Me Temporiza!, temporizador, temporizado online, pomodoro, técnica pomodoro">
     <meta name="description" content="Está procurando por um temporizador online? Use o Me Temporiza!">
     <meta name="theme-color" content="#BB8FCE">
-    <link rel="apple-touch-icon" href="../public/sources/logomin.svg">
-    <link rel="icon" href="../public/sources/logomin.svg">
+    <link rel="apple-touch-icon" href="./public/sources/logomin.svg">
+    <link rel="icon" href="./public/sources/logomin.svg">
     <link rel="manifest" href="../manifest.json">
-    <link rel="stylesheet" href="../public/stylesheets/index.css">
-    <link rel="stylesheet" href="../public/stylesheets/form.css">
-    <link rel="stylesheet" href="../public/stylesheets/generalStructure.css">
-    <script type="module" src="../public/dist/bundle.js"></script>
+    <link rel="stylesheet" href="./public/stylesheets/index.css">
+    <link rel="stylesheet" href="./public/stylesheets/form.css">
+    <link rel="stylesheet" href="./public/stylesheets/generalStructure.css">
+    <script type="module" src="./public/dist/bundle.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-QYXGSGEKF0"></script>
-    <script src="../public/javascripts/analytics.js"></script>
+    <script src="./public/javascripts/analytics.js"></script>
     <title>Me Temporiza!</title>
   </head>
 
   <body>
+    <div class="task-modal task-modal--hidden" id="task-modal"></div>
     <nav class="nav-container" id="navbar">
       <div class="inner-nav-container">
         <h1 class="nav-container__title hide clickable no-select" id="back-to-home">Me Temporiza!</h1>
@@ -70,15 +71,15 @@
                 <div class="timer__content">
                   <div class="timer__content--item">
                     <input class="timer-input" maxlength="2" value="00" data-id="timeInput" id="hours"></input>
-                    <span style="margin-inline: .01rem;">:</span>
+                    <span class="timer-colon">:</span>
                     <input class="timer-input" maxlength="2" value="00" data-id="timeInput" id="minutes"></input>
-                    <span style="margin-inline: .01rem;">:</span>
+                    <span class="timer-colon">:</span>
                     <input class="timer-input" maxlength="2" value="00" data-id="timeInput" id="seconds"></input>
                   </div>
                   <div class="timer__content--item">
-                    <img class="clickable no-select" id="execute" src="../public/sources/play.svg"
+                    <img class="clickable no-select" id="execute" src="./public/sources/play.svg"
                       alt="Botão para iniciar ou pausar contagem do cronômetro">
-                    <img class="clickable no-select" id="reload" src="../public/sources/reload.svg"
+                    <img class="clickable no-select" id="reload" src="./public/sources/reload.svg"
                       alt="Botão para reiniciar contagem do cronômetro">
                   </div>
                 </div>
@@ -200,7 +201,7 @@
       </div> -->
       <div class="hide-in-mobile">&nbsp;</div>
     </main>
-    <audio id="alarm" src="../public/sources/alarm.mp3"></audio>
+    <audio id="alarm" src="./public/sources/alarm.mp3"></audio>
   </body>
 
 </html>

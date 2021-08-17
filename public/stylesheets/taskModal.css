@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
+:root {
+  --color-background-dark: #453E69;
+
+  --font-size-text-timer: 1.4rem;
+  
+  --font-weight-bold: 600;
+}
+
+.task-modal-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 60%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  margin-block: 1rem;
+}
+
+.task-modal__field {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 70%;
+  margin-bottom: 1rem;
+}
+
+.task-modal__timer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  align-items: center;
+  width: 40%;
+}
+
+.task-modal__timer--container {
+  color: var(--color-background-dark);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-text-timer);
+  margin: 2rem;
+  width: 11rem;
+}
