@@ -1,7 +1,7 @@
 import React from 'react'
-import '../stylesheets/modal.css'
 import '../stylesheets/form.css'
 import '../stylesheets/generalStructure.css'
+import '../stylesheets/modal.css'
 
 /**
  * Class responsible for keeping a generic modal
@@ -22,7 +22,7 @@ export default class Modal extends React.Component {
           </div>
           <section className="modal-content">
             <header>
-              <h2>{this.props.title}</h2>
+              <h2 className="modal-title">{this.props.title}</h2>
               <p>{this.props.firstParagraph}</p>
               <p>{this.props.secondParagraph}</p>
             </header>

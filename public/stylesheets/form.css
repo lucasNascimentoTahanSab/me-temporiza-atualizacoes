@@ -6,11 +6,17 @@
   --color-background-dark: #453E69;
   --color-background-light: #BB8FCE;
 
-  --font-size-text: 1rem;
+  --font-size-text: 0.95rem;
 
   --font-family-text: 'Lato', sans-serif;
 
   --font-weight-bold: 600;
+}
+
+.form-input--label {
+  color: var(--color-background-dark);
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-text);
 }
 
 .form-input {
