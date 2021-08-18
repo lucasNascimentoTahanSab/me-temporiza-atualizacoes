@@ -1,5 +1,3 @@
-import Task from './task.js'
-
 /**
  * Class responsible for sequences data storage.
  * Sequences are data structures developed for keeping
@@ -13,6 +11,6 @@ export default class Sequence {
   constructor() {
     this.title = ''
     this.description = ''
-    this.tasks = [new Task]
+    this.tasks = []
   }
 }

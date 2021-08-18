@@ -26,10 +26,7 @@ export default class Modal extends React.Component {
               <p>{this.props.firstParagraph}</p>
               <p>{this.props.secondParagraph}</p>
             </header>
-            {this.props.children}
-            <footer className="modal-footer">
-              <button className="form-button">{this.props.buttonName}</button>
-            </footer>
+            {this.props.modalContent}
           </section>
         </div>
       </div>

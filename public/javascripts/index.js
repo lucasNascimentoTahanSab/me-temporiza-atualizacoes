@@ -213,18 +213,21 @@ function toggleClass(element, style) {
 function openTaskModal() {
   createTask()
   toggleLeftSideNav()
-  ReactDOM.render(
-    <Modal
-      title="Qual a boa?"
-      firstParagraph="Separar suas atividades em tarefas menores pode te ajudar"
-      secondParagraph="a gerenciar melhor seu tempo!"
-      buttonName="Salvar"
-      closeModal={closeTaskModal.bind(this)}
-    >
-      <TaskModal />
-    </Modal>,
-    document.getElementById('task-modal')
-  )
+  const taskModal = <TaskModal
+    buttonName="Salvar"
+    setTaskTitle={setTaskTitle.bind(this)}
+    setTaskDescription={setTaskDescription.bind(this)}
+    setTaskTimer={setTaskTimer.bind(this)}
+    saveTask={saveTask.bind(this)}
+  />
+  const modal = <Modal
+    title="Qual a boa?"
+    firstParagraph="Separar suas atividades em tarefas menores pode te ajudar"
+    secondParagraph="a gerenciar melhor seu tempo!"
+    closeModal={closeTaskModal.bind(this)}
+    modalContent={taskModal}
+  />
+  ReactDOM.render(modal, document.getElementById('task-modal'))
   toggleClass(document.getElementById('task-modal'), 'task-modal--hidden')
 }
 
@@ -237,12 +240,40 @@ function createTask() {
   taskController.createTask()
 }
 
+function setTaskTitle(event) {
+  taskController.title = event.target.value
+}
+
+function setTaskDescription(event) {
+  taskController.description = event.target.value
+}
+
+function setTaskTimer(hours, minutes, seconds) {
+  taskController.setTaskTimer(hours, minutes, seconds)
+}
+
+function saveTask() {
+  if (!taskController.isTaskReady()) return
+  if (!sequenceController.isThereAnySequence()) {
+    createSequence()
+    setSequenceTitle()
+  }
+
+  sequenceController.subscribeTaskInSequence(taskController.task)
+  deleteTask()
+  closeTaskModal()
+}
+
 function deleteTask() {
   taskController.deleteTask()
 }
 
 function createSequence() {
   sequenceController.createSequence()
+}
+
+function setSequenceTitle(title = 'Sem nome') {
+  sequenceController.title = title
 }
 
 /**

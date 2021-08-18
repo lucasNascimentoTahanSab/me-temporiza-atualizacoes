@@ -50,4 +50,8 @@ export default class SequenceController {
     if (this._sequences.length === 0) this.createSequence()
     this._sequences[this._currentSequence].tasks.push(task)
   }
+
+  isThereAnySequence() {
+    return this._sequences.length > 0
+  }
 }
