@@ -12,6 +12,14 @@
 .task-modal {
   width: 100%;
   height: 100%;
+  opacity: 1;
+  pointer-events: all;
+  transition: .5s;
+}
+
+.task-modal--hidden {
+  opacity: 0;
+  pointer-events: none;
 }
 
 .task-modal-container {
@@ -44,7 +52,7 @@
   margin: 2rem;
   color: var(--color-background-dark);
   font-weight: var(--font-weight-bold);
-  font-size: var(--font-size-text-timer);
+  font-size: var(--task-modal-font-size-text-timer);
 }
 
 .task-modal__timer-options {
@@ -81,4 +89,25 @@
   justify-content: center;
   width: 100%;
   margin-bottom: 2.5rem;
+}
+
+@media (max-width: 75.5rem) {
+  .task-modal__footer {
+    position: relative;
+  }
+}
+
+@media (max-width: 52.5rem) {
+  .task-modal {
+    height: fit-content;
+  }
+
+  .task-modal-container {
+    height: fit-content;
+    margin-bottom: 0;
+  }
+
+  .task-modal__timer {
+    height: fit-content;
+  }
 }

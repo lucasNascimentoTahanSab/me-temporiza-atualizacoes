@@ -3,20 +3,25 @@ import '../stylesheets/form.css'
 import '../stylesheets/generalStructure.css'
 import '../stylesheets/modal.css'
 
-/**
- * Class responsible for keeping a generic modal
- * structure for further use.
- */
 export default class Modal extends React.Component {
   constructor(props) {
     super(props)
+    this.state = { isNotVisible: '' }
+  }
+
+  componentDidMount() {
+    this.setState({ isNotVisible: '' })
+  }
+
+  componentWillUnmount() {
+    this.setState({ isNotVisible: 'task-modal--hidden' })
   }
 
   render() {
     return (
-      <div className="modal-container" id="modal-container">
+      <div className={"modal-container " + this.state.isNotVisible} id="modal-container">
         <div className="modal-body">
-          <div className="modal-close" onClick={this.props.closeModal}>
+          <div className="modal-close" onClick={this.props.closeModal.bind(this)}>
             <div className="close-button--up-line"></div>
             <div className="close-button--down-line"></div>
           </div>
@@ -30,6 +35,6 @@ export default class Modal extends React.Component {
           </section>
         </div>
       </div>
-    );
+    )
   }
 }

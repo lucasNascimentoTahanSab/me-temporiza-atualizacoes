@@ -228,12 +228,11 @@ function openTaskModal() {
     modalContent={taskModal}
   />
   ReactDOM.render(modal, document.getElementById('task-modal'))
-  toggleClass(document.getElementById('task-modal'), 'task-modal--hidden')
 }
 
 function closeTaskModal() {
   deleteTask()
-  toggleClass(document.getElementById('task-modal'), 'task-modal--hidden')
+  ReactDOM.unmountComponentAtNode(document.getElementById('task-modal'))
 }
 
 function createTask() {
@@ -260,7 +259,6 @@ function saveTask() {
   }
 
   sequenceController.subscribeTaskInSequence(taskController.task)
-  deleteTask()
   closeTaskModal()
 }
 
