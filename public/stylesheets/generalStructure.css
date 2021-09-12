@@ -7,6 +7,7 @@
   --color-background-light: #BB8FCE;
   --color-background-lighter: #E8DAEF;
   --color-scrollbar-background: #ccc;
+  --color-required: #F96565;
 
   --font-family-title: 'Lobster', cursive;
   --font-family-text: 'Lato', sans-serif;
@@ -139,6 +140,15 @@ img {
   border: .01rem solid var(--color-background-dark);
   background-color: var(--color-background-dark);
   transform: rotate(135deg);
+}
+
+.close-button--lighter {
+  border-color: var(--color-background-lighter);
+  background-color: var(--color-background-lighter);
+}
+
+.close-button--larger {
+  border-width: .1rem;
 }
 
 .left-side-nav-container {
@@ -330,7 +340,7 @@ img {
 }
 
 .red-highlight {
-  color: red;
+  color: var(--color-required);
 }
 
 .division {
@@ -421,6 +431,11 @@ img {
 ::-webkit-scrollbar-thumb {
   border-radius: .3125rem;
   background-color: var(--color-scrollbar-background);
+}
+
+@keyframes spin {
+  from { transform: translateZ(0deg); }
+  to { transform: translateZ(360deg); }
 }
 
 @media (max-width: 52.5rem) {

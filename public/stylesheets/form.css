@@ -1,14 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap');
 
 :root {
   --color-call-to-action: #741384;
   --color-background-dark: #453E69;
   --color-background-light: #BB8FCE;
+  --color-background-success: #1ECD97;
+  --color-background-error: #F96565;
+  --color-background-lighter: #E8DAEF;
 
   --font-size-text: 0.95rem;
+  --font-size-tiny-text: .75rem;
 
   --font-family-text: 'Lato', sans-serif;
+  --font-family-button: 'Inter', sans-serif;
 
   --font-weight-bold: 600;
 }
@@ -34,21 +40,52 @@
 }
 
 .form-button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
   padding: .5rem 1rem;
   border-radius: 5px;
   border-style: none;
   font-family: 'Lato', sans-serif;
   font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-text);
   background-color: var(--color-background-light);
   color: var(--color-call-to-action);
   box-shadow: 0 0 1rem .1rem rgba(0, 0, 0, .2);
   text-decoration: none;
-  width: 80%;
+  width: 7.5rem;
+  height: 2.2rem;
+  transition: .5s;
 }
 
-.form-button:visited {
-  color: var(--color-call-to-action);
+.form-button--loading {
+  background-color: var(--color-background-loading);
+}
+
+.form-button--success {
+  background-color: var(--color-background-success);
+  font-family: var(--font-family-button);
+  color: var(--color-background-lighter);
+}
+
+.form-button--error {
+  background-color: var(--color-background-error);
+  animation: error .25s;
+}
+
+.form-inline--warning {
+  color: var(--color-background-error);
+  font-size: var(--font-size-tiny-text);
+}
+
+@keyframes error {
+  0% { transform: rotateZ(0deg); }
+  25% { transform: rotateZ(10deg); }
+  50% { transform: rotateZ(-10deg); }
+  75% { transform: rotateZ(-10deg); }
+  100% { transform: rotateZ(10deg); }
 }
 
 @media (max-width: 52.5rem) {
