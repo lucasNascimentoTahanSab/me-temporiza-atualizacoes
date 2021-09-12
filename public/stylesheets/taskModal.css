@@ -1,55 +1,31 @@
-@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
-
-:root {
-  --task-modal-font-size-text-timer: 1.3rem;
-  
-  --color-background-dark: #453E69;
-  
-  --font-weight-bold: 600;
-}
-
 .task-modal-container {
+  position: fixed;
+  z-index: 20;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 60%;
-  overflow-x: hidden;
-  overflow-y: auto;
-  margin: 1rem 0;
-}
-
-.task-modal__field {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  width: 80%;
-  margin-bottom: 1rem;
-}
-
-.task-modal__timer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 40%;
-}
-
-.task-modal__timer--container {
-  width: 11rem;
-  margin: 2rem;
-  color: var(--color-background-dark);
-  font-weight: var(--font-weight-bold);
-  font-size: var(--font-size-text-timer);
-}
-
-.task-timer__content {
-  display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 100%;
-  padding: 0.9rem;
-  border-radius: 0 1rem 1rem;
-  box-shadow: 0 0 1rem .1rem rgba(0, 0, 0, .2);
-  background-color: var(--color-background-light);
+  height: 100%;
+  animation: task-modal-presentation .5s;
+  transition: .5s;
+}
+
+@keyframes task-modal-presentation {
+  from {
+    opacity: 0; 
+    visibility: hidden; 
+  }
+
+  to {
+    opacity: 1; 
+    visibility: visible; 
+  }
+}
+
+@media (max-width: 75.5rem) {
+  .task-modal-container {
+    position: absolute;
+    align-items: flex-end;
+    overflow-y: auto;
+  }
 }

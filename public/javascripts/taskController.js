@@ -39,4 +39,8 @@ export default class TaskController {
     this._timerController.selectTimer(hours, minutes, seconds)
     this._task.timer = this._timerController.timer
   }
+
+  isTaskReady() {
+    return this._task.title && (this._task.timer.initialHours && this._task.timer.initialMinutes && this._task.timer.initialSeconds)
+  }
 }

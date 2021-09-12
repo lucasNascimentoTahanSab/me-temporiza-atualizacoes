@@ -1,6 +1,5 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import Modal from '../components/modal'
 import TaskModal from '../components/taskModal'
 import TimerController from './timerController.js'
 import TaskController from './taskController.js'
@@ -213,28 +212,46 @@ function toggleClass(element, style) {
 function openTaskModal() {
   createTask()
   toggleLeftSideNav()
-  ReactDOM.render(
-    <Modal
-      title="Qual a boa?"
-      firstParagraph="Separar suas atividades em tarefas menores pode te ajudar"
-      secondParagraph="a gerenciar melhor seu tempo!"
-      buttonName="Salvar"
-      closeModal={closeTaskModal.bind(this)}
-    >
-      <TaskModal />
-    </Modal>,
-    document.getElementById('task-modal')
-  )
-  toggleClass(document.getElementById('task-modal'), 'task-modal--hidden')
+  const taskModal = <TaskModal
+    closeModal={closeTaskModal.bind(this)}
+    setTaskTitle={setTaskTitle.bind(this)}
+    setTaskDescription={setTaskDescription.bind(this)}
+    setTaskTimer={setTaskTimer.bind(this)}
+    saveTask={saveTask.bind(this)}
+  />
+  ReactDOM.render(taskModal, document.getElementById('task-modal'))
 }
 
 function closeTaskModal() {
   deleteTask()
-  toggleClass(document.getElementById('task-modal'), 'task-modal--hidden')
+  ReactDOM.unmountComponentAtNode(document.getElementById('task-modal'))
 }
 
 function createTask() {
   taskController.createTask()
+}
+
+function setTaskTitle(event) {
+  taskController.title = event.target.value
+}
+
+function setTaskDescription(event) {
+  taskController.description = event.target.value
+}
+
+function setTaskTimer(hours, minutes, seconds) {
+  taskController.setTaskTimer(hours, minutes, seconds)
+}
+
+function saveTask() {
+  if (!taskController.isTaskReady()) return
+  if (!sequenceController.isThereAnySequence()) {
+    createSequence()
+    setSequenceTitle()
+  }
+
+  sequenceController.subscribeTaskInSequence(taskController.task)
+  closeTaskModal()
 }
 
 function deleteTask() {
@@ -243,6 +260,10 @@ function deleteTask() {
 
 function createSequence() {
   sequenceController.createSequence()
+}
+
+function setSequenceTitle(title = 'Sem nome') {
+  sequenceController.title = title
 }
 
 /**
