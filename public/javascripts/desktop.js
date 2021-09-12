@@ -1,5 +1,3 @@
-const selectTimer = window.bundleExport.selectTimer
-
 const slides = [];
 
 (() => {
@@ -18,40 +16,6 @@ function setUpEvents() {
 	document.getElementById('left-second').addEventListener('click', goToLast)
 	document.getElementById('right-fourth').addEventListener('click', goToNext)
 	document.getElementById('left-third').addEventListener('click', goToLast)
-	$('#hours').keypress(handleCustomTimeSelection)
-	$('#minutes').keypress(handleCustomTimeSelection)
-	$('#seconds').keypress(handleCustomTimeSelection)
-	$('#hours').keydown(handleBackspacePressed)
-	$('#minutes').keydown(handleBackspacePressed)
-	$('#seconds').keydown(handleBackspacePressed)
-}
-
-/**
- * Method responsible for custom time selection in 
- * desktop, updating the time input without the need
- * to backspacing.
- */
-function handleCustomTimeSelection(event) {
-	if (event.key < '0' || event.key > '9') return false
-
-	const characters = event.target.value.split('')
-	event.target.value = characters[1] + event.key
-	selectTimer(document.getElementById('hours').value, document.getElementById('minutes').value, document.getElementById('seconds').value)
-}
-
-/**
- * Method responsible for handling backspacing in custom time 
- * editing. Key code 8 is the correspondent backspace key code when 
- * handling key down and "event.preventDefault()" is needed here to 
- * avoid unexpected behavior.
- */
-function handleBackspacePressed(event) {
-	if (event.keyCode !== 8) return true
-
-	event.preventDefault()
-	const characters = event.target.value.split('')
-	event.target.value = characters[0] === '0' ? '00' : '0' + characters[1]
-	selectTimer(document.getElementById('hours').value, document.getElementById('minutes').value, document.getElementById('seconds').value)
 }
 
 /**
