@@ -30,6 +30,28 @@ export default class TaskController {
     return this._tasks[this._currentTask]
   }
 
+  get currentHours() {
+    return this.task.timer.initialHours
+  }
+
+  get currentMinutes() {
+    return this.task.timer.initialMinutes
+  }
+
+  get currentSeconds() {
+    return this.task.timer.initialSeconds
+  }
+
+  get isTitleFilled() {
+    return this._tasks[this._currentTask].title != ''
+  }
+
+  get isTimerFilled() {
+    return this._tasks[this._currentTask].timer.initialHours !== '00' ||
+      this._tasks[this._currentTask].timer.initialMinutes !== '00' ||
+      this._tasks[this._currentTask].timer.initialSeconds !== '00'
+  }
+
   createTask() {
     this._tasks.push(new Task)
     this._currentTask = this._tasks.length - 1
@@ -49,10 +71,6 @@ export default class TaskController {
   }
 
   isTaskReady() {
-    return this._tasks[this._currentTask].title && (
-      this._tasks[this._currentTask].timer.initialHours &&
-      this._tasks[this._currentTask].timer.initialMinutes &&
-      this._tasks[this._currentTask].timer.initialSeconds
-    )
+    return this.isTitleFilled && this.isTimerFilled
   }
 }
