@@ -1,6 +1,7 @@
 import React from 'react'
 import Modal from './modal.jsx'
 import TaskForm from './TaskForm.jsx'
+import '../stylesheets/generalStructure.css'
 import '../stylesheets/taskModal.css'
 
 /**

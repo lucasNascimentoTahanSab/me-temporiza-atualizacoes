@@ -27,7 +27,6 @@
   flex-direction: column;
   align-items: center;
   height: 60%;
-  overflow-x: hidden;
   overflow-y: auto;
   margin: 1rem 0;
 }

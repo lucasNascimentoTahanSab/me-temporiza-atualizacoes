@@ -220,11 +220,13 @@ function openTaskModal() {
     saveTask={saveTask.bind(this)}
   />
   ReactDOM.render(taskModal, document.getElementById('task-modal'))
+  toggleBodyScroll()
 }
 
 function closeTaskModal() {
   deleteTask()
   ReactDOM.unmountComponentAtNode(document.getElementById('task-modal'))
+  toggleBodyScroll()
 }
 
 function createTask() {
@@ -264,6 +266,12 @@ function createSequence() {
 
 function setSequenceTitle(title = 'Sem nome') {
   sequenceController.title = title
+}
+
+function toggleBodyScroll() {
+  const body = document.querySelector('body')
+  if (body.classList.contains('no-scroll')) body.classList.remove('no-scroll')
+  else body.classList.add('no-scroll')
 }
 
 /**
