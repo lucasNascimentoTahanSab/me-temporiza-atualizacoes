@@ -396,6 +396,10 @@ img {
   margin-bottom: 2%;
 }
 
+.no-scroll {
+  overflow: hidden;
+}
+
 .no-select {
   -webkit-tap-highlight-color: transparent;
   -webkit-touch-callout: none;
