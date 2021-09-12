@@ -1,4 +1,5 @@
 import React from 'react'
+import TaskController from '../javascripts/taskController.js'
 import '../stylesheets/form.css'
 import '../stylesheets/generalStructure.css'
 import '../stylesheets/taskForm.css'
@@ -11,9 +12,11 @@ const mobileEnvironments = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|O
  */
 export default class TaskForm extends React.Component {
   _timeFormatted
+  _taskController
 
   constructor(props) {
     super(props)
+    this._taskController = new TaskController
   }
 
   componentDidMount() {
@@ -22,16 +25,18 @@ export default class TaskForm extends React.Component {
   }
 
   render() {
+    this._createTask()
+
     return (
       <div className="task-form">
         <div className="task-form-container">
           <div className="task-form__field">
             <label className="form-input--label" for="task-title">Título<span className="red-highlight">*</span></label>
-            <input className="form-input" id="task-title" onChange={this.props.setTaskTitle}></input>
+            <input className="form-input" id="task-title" onChange={this._setTaskTitle.bind(this)}></input>
           </div>
           <div className="task-form__field">
             <label className="form-input--label" for="task-description">Descrição</label>
-            <textarea className="form-input large" id="message-body" onChange={this.props.setTaskDescription}></textarea>
+            <textarea className="form-input large" id="message-body" onChange={this._setTaskDescription.bind(this)}></textarea>
           </div>
           <div className="task-form__timer">
             <div className="task-form__timer--container" id="task-timer">
@@ -68,10 +73,26 @@ export default class TaskForm extends React.Component {
     )
   }
 
-  _saveTask() {
+  _createTask() {
+    this._taskController.createTask()
+  }
+
+  _setTaskTitle(event) {
+    this._taskController.title = event.target.value
+  }
+
+  _setTaskDescription(event) {
+    this._taskController.description = event.target.value
+  }
+
+  _setTaskTimer() {
     const timeSplitted = this._timeFormatted.split(':')
-    this.props.setTaskTimer(timeSplitted[0], timeSplitted[1], timeSplitted[2])
-    this.props.saveTask()
+    this._taskController.setTaskTimer(timeSplitted[0], timeSplitted[1], timeSplitted[2])
+  }
+
+  _saveTask() {
+    this._setTaskTimer()
+    if (this._taskController.isTaskReady()) this.props.saveTask(this._taskController.task)
   }
 
   _handlePresetTimeSelection(event) {

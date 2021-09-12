@@ -210,15 +210,8 @@ function toggleClass(element, style) {
 }
 
 function openTaskModal() {
-  createTask()
   toggleLeftSideNav()
-  const taskModal = <TaskModal
-    closeModal={closeTaskModal.bind(this)}
-    setTaskTitle={setTaskTitle.bind(this)}
-    setTaskDescription={setTaskDescription.bind(this)}
-    setTaskTimer={setTaskTimer.bind(this)}
-    saveTask={saveTask.bind(this)}
-  />
+  const taskModal = <TaskModal closeModal={closeTaskModal.bind(this)} saveTask={saveTask.bind(this)} />
   ReactDOM.render(taskModal, document.getElementById('task-modal'))
   toggleBodyScroll()
 }
@@ -229,31 +222,10 @@ function closeTaskModal() {
   toggleBodyScroll()
 }
 
-function createTask() {
-  taskController.createTask()
-}
-
-function setTaskTitle(event) {
-  taskController.title = event.target.value
-}
-
-function setTaskDescription(event) {
-  taskController.description = event.target.value
-}
-
-function setTaskTimer(hours, minutes, seconds) {
-  taskController.setTaskTimer(hours, minutes, seconds)
-}
-
-function saveTask() {
-  if (!taskController.isTaskReady()) return
-  if (!sequenceController.isThereAnySequence()) {
-    createSequence()
-    setSequenceTitle()
-  }
-
-  sequenceController.subscribeTaskInSequence(taskController.task)
-  closeTaskModal()
+function saveTask(task) {
+  taskController.subscribeTaskInTasks(task)
+  ReactDOM.unmountComponentAtNode(document.getElementById('task-modal'))
+  toggleBodyScroll()
 }
 
 function deleteTask() {
@@ -262,10 +234,6 @@ function deleteTask() {
 
 function createSequence() {
   sequenceController.createSequence()
-}
-
-function setSequenceTitle(title = 'Sem nome') {
-  sequenceController.title = title
 }
 
 function toggleBodyScroll() {
