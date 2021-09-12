@@ -8,17 +8,6 @@
   --color-background-lighter: #E8DAEF;
 }
 
-.modal-container {
-  position: fixed;
-  z-index: 20;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, .2);
-}
-
 .modal-body {
   position: relative;
   display: flex;
@@ -29,6 +18,9 @@
   height: 37.5rem;
   border-radius: .3125rem;
   background-color: var(--color-background-lighter);
+  box-shadow: 100% 100% .1 var(--color-background-lighter);
+  opacity: 1;
+  transition: .5s;
 }
 
 .modal-close {
@@ -67,17 +59,6 @@
 }
 
 @media (max-width: 75.5rem) {
-  .container {
-    overflow-y: hidden;
-  }
-
-  .modal-container {
-    position: fixed;
-    z-index: 20;
-    align-items: flex-end;
-    overflow-y: auto;
-  }
-
   .modal-body {
     position: absolute;
     top: 25vh;

@@ -1,6 +1,5 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import Modal from '../components/modal'
 import TaskModal from '../components/taskModal'
 import TimerController from './timerController.js'
 import TaskController from './taskController.js'
@@ -214,20 +213,13 @@ function openTaskModal() {
   createTask()
   toggleLeftSideNav()
   const taskModal = <TaskModal
-    buttonName="Salvar"
+    closeModal={closeTaskModal.bind(this)}
     setTaskTitle={setTaskTitle.bind(this)}
     setTaskDescription={setTaskDescription.bind(this)}
     setTaskTimer={setTaskTimer.bind(this)}
     saveTask={saveTask.bind(this)}
   />
-  const modal = <Modal
-    title="Qual a boa?"
-    firstParagraph="Separar suas atividades em tarefas menores pode te ajudar"
-    secondParagraph="a gerenciar melhor seu tempo!"
-    closeModal={closeTaskModal.bind(this)}
-    modalContent={taskModal}
-  />
-  ReactDOM.render(modal, document.getElementById('task-modal'))
+  ReactDOM.render(taskModal, document.getElementById('task-modal'))
 }
 
 function closeTaskModal() {
