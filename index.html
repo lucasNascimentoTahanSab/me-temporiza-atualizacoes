@@ -57,29 +57,7 @@
                 <h2>Me Temporiza!</h2>
                 <p>Temporize aqui o tempo que você utiliza em cada atividade!</p>
               </header>
-              <div class="timer" id="timer">
-                <div class="timer__options">
-                  <span class="timer__options--item clickable selected no-select" id="5minutes"
-                    data-time="00:05:00">5</span>
-                  <span class=" timer__options--item clickable no-select" id="25minutes" data-time="00:25:00">25</span>
-                  <span class="timer__options--item clickable no-select" id="50minutes" data-time="00:50:00">50</span>
-                </div>
-                <div class="timer__content">
-                  <div class="timer__content--item">
-                    <input class="timer-input" maxlength="2" value="00" data-id="timeInput" id="hours"></input>
-                    <span class="timer-colon">:</span>
-                    <input class="timer-input" maxlength="2" value="00" data-id="timeInput" id="minutes"></input>
-                    <span class="timer-colon">:</span>
-                    <input class="timer-input" maxlength="2" value="00" data-id="timeInput" id="seconds"></input>
-                  </div>
-                  <div class="timer__content--item">
-                    <img class="clickable no-select" id="execute" src="./public/sources/play.svg"
-                      alt="Botão para iniciar ou pausar contagem do cronômetro">
-                    <img class="clickable no-select" id="reload" src="./public/sources/reload.svg"
-                      alt="Botão para reiniciar contagem do cronômetro">
-                  </div>
-                </div>
-              </div>
+              <div id="timer"></div>
             </div>
           </section>
           <span class="arrow-right light-border clickable no-select" id="right-second"></span>

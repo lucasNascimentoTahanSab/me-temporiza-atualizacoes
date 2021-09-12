@@ -1,0 +1,91 @@
+:root {
+  --color-selected: #D7BDE2;
+  --color-background-dark: #453E69;
+  --color-background-light: #BB8FCE;
+  --color-background-lighter: #E8DAEF;
+  
+  --font-family-text: 'Lato', sans-serif;
+
+  --font-size-text-timer: 1.4rem;
+  
+  --font-weight-bold: 600;
+}
+
+.timer {
+  width: 15rem;
+  color: var(--color-background-dark);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-text-timer);
+}
+
+.timer__options {
+  display: flex;
+  width: 70%;
+  overflow: hidden;
+  border-radius: 1rem 1rem 0 0;
+  background-color: var(--color-background-lighter);
+}
+
+.timer__options--item {
+  width: 100%;
+  padding: 5%;
+  transition: 0.5s;
+}
+
+.timer__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 0.9rem;
+  border-radius: 0 1rem 1rem;
+  box-shadow: 0 0 1rem .1rem rgba(0, 0, 0, .2);
+  background-color: var(--color-background-light);
+}
+
+.timer__content--item {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin: 1rem;
+  width: 100%;
+}
+
+.timer-input {
+  outline: none;
+  text-align: center;
+  border-radius: 10px;
+  border-style: none;
+  padding: .5rem;
+  width: calc(var(--font-size-text-timer) * 2);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-text-timer);
+  font-family: var(--font-family-text);
+  color: var(--color-background-dark);
+  background-color: var(--color-selected);
+  caret-color: var(--color-background-dark);
+}
+
+.timer-colon {
+  margin: 0 .01rem;
+}
+
+@media (max-width: 52.5rem) {
+  :root {
+    --font-size-text-timer: 1.3rem;
+  }
+  
+  .timer {
+    margin: 2rem;
+    width: 11rem;
+  }
+
+  .timer__options {
+    width: 100%;
+  }
+
+  .timer__content {
+    border-radius: 0 0 1rem 1rem;
+  }
+}
