@@ -17,6 +17,18 @@ export default class TimerController {
 		return this._timer
 	}
 
+	get currentHours() {
+		return this._timer.initialHours
+	}
+
+	get currentMinutes() {
+		return this._timer.initialMinutes
+	}
+
+	get currentSeconds() {
+		return this._timer.initialSeconds
+	}
+
 	toggleTimerMode(play) {
 		if (play) this._playTimer()
 		else this._pauseTimer()
