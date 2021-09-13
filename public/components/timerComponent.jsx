@@ -1,15 +1,13 @@
 import React from 'react'
+import PlayButton from './playButton.jsx'
+import PauseButton from './pauseButton.jsx'
+import ReloadButton from './reloadButton.jsx'
 import TimerController from '../javascripts/timerController.js'
-import play from '../sources/play.svg'
-import pause from '../sources/pause.svg'
-import reload from '../sources/reload.svg'
 import '../stylesheets/timer.css'
 import '../stylesheets/generalStructure.css'
 
 const mobileEnvironments = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i
 const oneSecond = 1000
-
-const createMarkup = element => { __html: element }
 
 export default class TimerComponent extends React.Component {
   _timerController
@@ -32,7 +30,7 @@ export default class TimerComponent extends React.Component {
       firstPresetSelected: true,
       secondPresetSelected: false,
       thirdPresetSelected: false,
-      executeImage: play
+      executeImage: <PlayButton></PlayButton>
     }
   }
 
@@ -67,10 +65,12 @@ export default class TimerComponent extends React.Component {
               onChange={this._handleCustomTimeSelection.bind(this)}></input>
           </div>
           <div class="timer__content--item">
-            <div class="clickable no-select" dangerouslySetInnerHTML={createMarkup(this.state.executeImage)}
-              onClick={this._toggleTimerMode.bind()} alt="Botão para iniciar ou pausar contagem do cronômetro"></div>
-            <div class="clickable no-select" dangerouslySetInnerHTML={createMarkup(reload)}
-              onClick={this._reloadTimer.bind()} alt="Botão para reiniciar contagem do cronômetro"></div>
+            <div class="clickable no-select" onClick={this._toggleTimerMode.bind()}>
+              {this.state.executeImage}
+            </div>
+            <div class="clickable no-select" onClick={this._reloadTimer.bind()}>
+              <ReloadButton></ReloadButton>
+            </div>
           </div>
         </div>
       </div>
@@ -262,7 +262,7 @@ export default class TimerComponent extends React.Component {
   }
 
   _changeExecuteImage() {
-    this.setState({ executeImage: this._timerController.isPlaying ? pause : play })
+    this.setState({ executeImage: this._timerController.isPlaying ? <PauseButton></PauseButton> : <PlayButton></PlayButton> })
   }
 
   _changeTimerValueOnScreen() {
