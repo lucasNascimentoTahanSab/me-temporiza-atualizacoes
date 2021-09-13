@@ -71,6 +71,21 @@
   margin: 0 .01rem;
 }
 
+/* Classes responsible for defining compact timer */
+
+.timer--compact {
+  width: 11rem;
+  margin: 2rem;
+}
+
+.timer__options--compact {
+  width: 100%;
+}
+
+.timer__content--compact {
+  border-radius: 0 0 1rem 1rem;
+}
+
 @media (max-width: 52.5rem) {
   :root {
     --font-size-text-timer: 1.3rem;

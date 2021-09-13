@@ -53,8 +53,8 @@ export default class TimerComponent extends React.Component {
 
   render() {
     return (
-      <div class="timer">
-        <div class="timer__options">
+      <div class={"timer" + (this.props.compact ? " timer--compact" : "")}>
+        <div class={"timer__options" + (this.props.compact ? " timer__options--compact" : "")}>
           <span class="timer__options--item clickable no-select selected" data-time="00:05:00"
             ref={this._firstPreset} onClick={this._handlePresetTimeSelection.bind(this)}>5</span>
           <span class="timer__options--item clickable no-select" data-time="00:25:00"
@@ -62,7 +62,7 @@ export default class TimerComponent extends React.Component {
           <span class="timer__options--item clickable no-select" data-time="00:50:00"
             ref={this._thirdPreset} onClick={this._handlePresetTimeSelection.bind(this)}>50</span>
         </div>
-        <div class="timer__content">
+        <div class={"timer__content" + (this.props.compact ? " timer__content--compact" : "")}>
           <div class="timer__content--item">
             <input class="timer-input" maxlength="2" ref={this._hoursInput} onKeyPress={this._customTimeSelectionOnKeyPressed.bind(this)}
               onChange={this._handleCustomTimeSelection.bind(this)}></input>
@@ -73,14 +73,20 @@ export default class TimerComponent extends React.Component {
             <input class="timer-input" maxlength="2" ref={this._secondsInput} onKeyPress={this._customTimeSelectionOnKeyPressed.bind(this)}
               onChange={this._handleCustomTimeSelection.bind(this)}></input>
           </div>
-          <div class="timer__content--item">
-            <div class="clickable no-select" onClick={this._toggleTimerMode.bind(this)}>
-              {this.state.executionButton}
-            </div>
-            <div class="clickable no-select" onClick={this._reloadTimer.bind(this)}>
-              <ReloadButton></ReloadButton>
-            </div>
-          </div>
+          {!this.props.compact ? this._timerButtonsSection() : null}
+        </div>
+      </div>
+    )
+  }
+
+  _timerButtonsSection() {
+    return (
+      <div class="timer__content--item">
+        <div class="clickable no-select" onClick={this._toggleTimerMode.bind(this)}>
+          {this.state.executionButton}
+        </div>
+        <div class="clickable no-select" onClick={this._reloadTimer.bind(this)}>
+          <ReloadButton></ReloadButton>
         </div>
       </div>
     )
@@ -106,6 +112,9 @@ export default class TimerComponent extends React.Component {
     this._timerController.selectTimer(hours, minutes, seconds)
     this._timeFormatted = this._timerController.getTimeFormatted()
     this._updatePresetTimes()
+
+    if ('sendTime' in this.props)
+      this.props.sendTime(hours, minutes, seconds)
   }
 
   /**
