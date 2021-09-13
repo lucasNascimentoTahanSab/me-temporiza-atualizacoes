@@ -19,13 +19,13 @@ export default class Button extends React.Component {
 
   _standardButton() {
     return (
-      <button className="form-button" onClick={this._handleClick.bind(this)}>{this.props.buttonName}</button>
+      <button className="form-button no-select" onClick={this._handleClick.bind(this)}>{this.props.buttonName}</button>
     );
   }
 
   _successButton() {
     return (
-      <button className="form-button form-button--success">
+      <button className="form-button form-button--success no-select">
         &#10003;
       </button>
     );
@@ -35,7 +35,7 @@ export default class Button extends React.Component {
     setTimeout(this._returnToStandardButton.bind(this), 1000)
 
     return (
-      <button className="form-button form-button--error" onClick={this._handleClick.bind(this)}>
+      <button className="form-button form-button--error no-select" onClick={this._handleClick.bind(this)}>
         <div className="close-button--up-line close-button--lighter close-button--larger"></div>
         <div className="close-button--down-line close-button--lighter close-button--larger"></div>
       </button>
