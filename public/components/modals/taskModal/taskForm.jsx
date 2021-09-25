@@ -1,11 +1,10 @@
 import React from 'react'
-import Button from './buttons/button.jsx'
-import WarningInline from './WarningInline.jsx'
-import TimerComponent from './timerComponent.jsx'
-import TaskController from '../javascripts/taskController.js'
-import '../stylesheets/form.css'
-import '../stylesheets/generalStructure.css'
-import '../stylesheets/taskForm.css'
+import Button from '../../buttons/button.jsx'
+import TimerComponent from '../../timer/timerComponent.jsx'
+import TaskController from '../../../javascripts/task/taskController.js'
+import '../../../stylesheets/form.css'
+import '../../../stylesheets/generalStructure.css'
+import '../../../stylesheets/taskForm.css'
 
 /**
  * Component responsible for keeping the task form
@@ -43,7 +42,7 @@ export default class TaskForm extends React.Component {
           <div className="task-form__field">
             <label className="form-input--label" for="task-title">Título<span className="red-highlight">*</span></label>
             <input className="form-input" id="task-title" onChange={this._setTaskTitle.bind(this)}></input>
-            <WarningInline showMessage={this.state.showRequiredTitle} message="*Dê um nome para a tarefa antes de salvar" />
+            {this._getInlineWarningIf(this.state.showRequiredTitle, '*Dê um nome para a tarefa antes de salvar')}
           </div>
           <div className="task-form__field">
             <label className="form-input--label" for="task-description">Descrição</label>
@@ -51,7 +50,7 @@ export default class TaskForm extends React.Component {
           </div>
           <div>
             <TimerComponent compact={true} sendTime={this._setTaskTimer.bind(this)}></TimerComponent>
-            <WarningInline showMessage={this.state.showRequiredTimer} message="*Dê um tempo para a tarefa antes de salvar" />
+            {this._getInlineWarningIf(this.state.showRequiredTimer, '*Dê um tempo para a tarefa antes de salvar')}
           </div>
         </div>
         <footer className="task-form__footer">
@@ -96,5 +95,11 @@ export default class TaskForm extends React.Component {
       showRequiredTitle: !this._taskController.isTitleFilled,
       showRequiredTimer: !this._taskController.isTimerFilled
     })
+  }
+
+  _getInlineWarningIf(condition, message) {
+    if (!condition) return;
+
+    return <span className="form-inline--warning">{message}</span>
   }
 }

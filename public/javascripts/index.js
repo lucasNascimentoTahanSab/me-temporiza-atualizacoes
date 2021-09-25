@@ -1,9 +1,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import TimerComponent from '../components/timerComponent'
-import TaskModal from '../components/taskModal'
-import TaskController from './taskController.js'
-import SequenceController from './sequenceController.js'
+import TimerComponent from '../components/timer/timerComponent.jsx'
+import TaskModal from '../components/modals/taskModal/taskModal.jsx'
+import TaskController from './task/taskController.js'
+import SequenceController from './sequence/sequenceController.js'
 
 const mobileEnvironments = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i
 

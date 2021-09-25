@@ -1,10 +1,10 @@
 import React from 'react'
-import PlayButton from './buttons/playButton.jsx'
-import PauseButton from './buttons/pauseButton.jsx'
-import ReloadButton from './buttons/reloadButton.jsx'
-import TimerController from '../javascripts/timerController.js'
-import '../stylesheets/timer.css'
-import '../stylesheets/generalStructure.css'
+import PlayButton from '../buttons/playButton.jsx'
+import PauseButton from '../buttons/pauseButton.jsx'
+import ReloadButton from '../buttons/reloadButton.jsx'
+import TimerController from '../../javascripts/timer/timerController.js'
+import '../../stylesheets/timer.css'
+import '../../stylesheets/generalStructure.css'
 
 const mobileEnvironments = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i
 const oneSecond = 1000
@@ -211,8 +211,8 @@ export default class TimerComponent extends React.Component {
   }
 
   _customTimeSelectionOnKeyDown(event) {
-    if (this._timerController.isPlaying) this._toggleTimerModeWhenPlaying()
     if (!mobileEnvironments.test(navigator.userAgent)) this._handleBackspacePressed(event)
+    if (this._timerController.isPlaying) this._toggleTimerModeWhenPlaying()
   }
 
   _customTimeSelectionOnChange(event) {

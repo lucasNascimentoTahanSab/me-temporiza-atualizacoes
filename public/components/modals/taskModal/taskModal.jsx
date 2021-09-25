@@ -1,8 +1,8 @@
 import React from 'react'
-import Modal from './modal.jsx'
-import TaskForm from './TaskForm.jsx'
-import '../stylesheets/generalStructure.css'
-import '../stylesheets/taskModal.css'
+import Modal from '../modal.jsx'
+import TaskForm from './taskForm.jsx'
+import '../../../stylesheets/generalStructure.css'
+import '../../../stylesheets/taskModal.css'
 
 /**
  * Component responsible for keeping rendering the
