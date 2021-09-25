@@ -34,7 +34,7 @@ export default class SequenceController {
 
   get sequence() {
     if (this._sequences.length === 0 || this._sequences.length - 1 < this._currentSequence) return
-    return this.sequence[this._currentSequence]
+    return this._sequences[this._currentSequence]
   }
 
   createSequence() {
@@ -43,7 +43,7 @@ export default class SequenceController {
   }
 
   deleteSequence() {
-    delete this.sequence[this._currentSequence]
+    this._sequences.splice(this._currentSequence, 1)
   }
 
   subscribeTaskInSequence(task) {
