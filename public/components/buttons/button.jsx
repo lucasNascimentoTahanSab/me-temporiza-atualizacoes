@@ -1,6 +1,6 @@
 import React from 'react'
-import '../stylesheets/form.css'
-import '../stylesheets/generalStructure.css'
+import '../../stylesheets/form.css'
+import '../../stylesheets/generalStructure.css'
 
 export default class Button extends React.Component {
   constructor(props) {
