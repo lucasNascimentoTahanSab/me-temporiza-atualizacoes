@@ -1,5 +1,5 @@
 import Task from './task.js'
-import TimerController from './timerController.js'
+import TimerController from '../timer/timerController.js'
 
 export default class TaskController {
   _tasks

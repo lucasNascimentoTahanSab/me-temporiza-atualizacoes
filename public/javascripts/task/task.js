@@ -1,4 +1,4 @@
-import Timer from './timer.js'
+import Timer from '../timer/timer.js'
 
 /**
  * Class responsible for tasks data storage.

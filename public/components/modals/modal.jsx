@@ -1,7 +1,7 @@
 import React from 'react'
-import '../stylesheets/form.css'
-import '../stylesheets/generalStructure.css'
-import '../stylesheets/modal.css'
+import '../../stylesheets/form.css'
+import '../../stylesheets/generalStructure.css'
+import '../../stylesheets/modal.css'
 
 export default class Modal extends React.Component {
   constructor(props) {
