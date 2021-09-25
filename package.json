@@ -2,7 +2,7 @@
   "name": "me-temporiza",
   "version": "1.0.0",
   "description": "This is a timer based application aiming to simplify every day tasks, making it easier to organize them by automatically controlling the time spent in each one.",
-  "main": "index.js",
+  "main": "metemporiza.js",
   "scripts": {
     "start": "nodemon ./bin/www",
     "build": "webpack"
@@ -27,11 +27,13 @@
     "@babel/preset-react": "^7.14.5",
     "babel-loader": "^8.2.2",
     "css-loader": "^6.2.0",
+    "nodemon": "^2.0.13",
     "style-loader": "^3.2.1",
     "webpack": "^5.50.0",
     "webpack-cli": "^4.7.2"
   },
   "dependencies": {
+    "express": "^4.17.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   }
