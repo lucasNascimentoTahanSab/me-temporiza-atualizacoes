@@ -19,6 +19,7 @@ export default class TimerComponent extends React.Component {
   _firstPreset
   _secondPreset
   _thirdPreset
+  _resetTimer
 
   constructor(props) {
     super(props)
@@ -29,6 +30,7 @@ export default class TimerComponent extends React.Component {
     this._firstPreset = React.createRef()
     this._secondPreset = React.createRef()
     this._thirdPreset = React.createRef()
+    this._resetTimer = false
     this.state = { executionButton: <PlayButton></PlayButton> }
   }
 
@@ -43,12 +45,8 @@ export default class TimerComponent extends React.Component {
   }
 
   componentDidUpdate() {
-    this._selectTimer(
-      this._timerController.initialHours,
-      this._timerController.initialMinutes,
-      this._timerController.initialSeconds
-    )
     this._changeTimerValueOnScreen()
+    this._updatePresetTimes()
   }
 
   render() {
@@ -148,20 +146,26 @@ export default class TimerComponent extends React.Component {
 
   _toggleTimerModeWhenPlaying() {
     this._timerController.toggleTimerMode(false)
-    this._changeExecuteButton()
     this._stopTimer()
+
+    this._resetTimer = false
+    this._changeExecuteButton()
   }
 
   _toggleTimerModeWhenAlarmPlaying() {
     this._timerController.toggleTimerMode(false)
-    this._changeExecuteButton()
     this._stopAlarm()
+
+    this._resetTimer = false
+    this._changeExecuteButton()
   }
 
   _toggleTimerModeWhenNotPlaying() {
     this._timerController.toggleTimerMode(true)
-    this._changeExecuteButton()
     this._startTimer()
+
+    this._resetTimer = false
+    this._changeExecuteButton()
   }
 
   _startTimer() {
@@ -201,8 +205,10 @@ export default class TimerComponent extends React.Component {
     this._stopTimer()
     this._timerController.reloadTimer()
     this._changeTimerValueOnScreen()
-    this._changeExecuteButton()
     this._stopAlarm()
+
+    this._resetTimer = true
+    this._changeExecuteButton()
   }
 
   _customTimeSelectionOnKeyPressed(event) {

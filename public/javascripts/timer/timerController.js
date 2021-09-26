@@ -17,16 +17,16 @@ export default class TimerController {
 		return this._timer
 	}
 
-	get initialHours() {
-		return this._timer.initialHours
+	get currentHours() {
+		return this._timer.currentHours
 	}
 
-	get initialMinutes() {
-		return this._timer.initialMinutes
+	get currentMinutes() {
+		return this._timer.currentMinutes
 	}
 
-	get initialSeconds() {
-		return this._timer.initialSeconds
+	get currentSeconds() {
+		return this._timer.currentSeconds
 	}
 
 	toggleTimerMode(play) {
@@ -102,11 +102,11 @@ export default class TimerController {
 	}
 
 	_getMillisecondsInHours(milliseconds) {
-		return Math.floor(milliseconds / 1000 / 60 / 60)
+		return Math.floor(milliseconds / 1000 / 60 / 60) % 24
 	}
 
 	_getMillisecondsInMinutes(milliseconds) {
-		return Math.floor(milliseconds / 1000 / 60)
+		return Math.floor(milliseconds / 1000 / 60) % 60
 	}
 
 	_getMillisecondsInSeconds(milliseconds) {
