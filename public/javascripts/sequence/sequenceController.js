@@ -43,6 +43,7 @@ export default class SequenceController {
   }
 
   deleteSequence() {
+    if (this._sequences.length === 0 || this._sequences.length - 1 < this._currentSequence) return
     this._sequences.splice(this._currentSequence, 1)
   }
 

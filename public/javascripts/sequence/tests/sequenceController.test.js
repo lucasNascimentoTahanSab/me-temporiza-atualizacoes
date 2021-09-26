@@ -6,7 +6,6 @@ const sequenceTitle = 'Tasks for today morning'
 const sequenceDescription = 'Sequence for keeping my today morning tasks.'
 
 test('sequences must start empty', () => {
-  expect(sequenceController._sequences.length).toBe(0)
   expect(sequenceController.sequence).toBeUndefined()
 })
 
@@ -26,6 +25,10 @@ test('sequence timer definition when there is no sequence', () => {
   expect(() => sequenceController.subscribeTaskInSequence(new Task)).not.toThrow()
 })
 
+test('delete sequence when there is no sequence', () => {
+  expect(() => sequenceController.deleteSequence()).not.toThrow()
+})
+
 test('sequence creation', () => {
   sequenceController.createSequence()
   expect(sequenceController.sequence.title).toBe('')
@@ -43,7 +46,7 @@ test('sequence description definition', () => {
   expect(sequenceController.sequence.description).toBe(sequenceDescription)
 })
 
-test('sequence timer definition', () => {
+test('sequence task definition', () => {
   const newTask = new Task
   sequenceController.subscribeTaskInSequence(newTask)
   expect(sequenceController.sequence.tasks[0]).toEqual(newTask)
@@ -59,12 +62,12 @@ test('current sequence change', () => {
   expect(sequenceController.sequence).toEqual(currentSequence)
 })
 
-test('sequence exclusion when there are more than one sequence', () => {
+test('delete sequence when there is more than one sequence', () => {
   sequenceController.deleteSequence()
   expect(sequenceController.sequence).not.toBeUndefined()
 })
 
-test('sequence exclusion when there is just one sequence', () => {
+test('delete sequence when there is just one sequence', () => {
   sequenceController.deleteSequence()
   expect(sequenceController.sequence).toBeUndefined()
 })
