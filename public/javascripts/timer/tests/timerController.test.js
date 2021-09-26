@@ -24,16 +24,16 @@ test('timer must be paused when initialized', () => {
   expect(timerController.isPlaying).toBeFalsy()
 })
 
-test('initial hours when timer is clean', () => {
-  expect(timerController.initialHours).toBe(timerInitialHours)
+test('current hours when timer is clean', () => {
+  expect(timerController.currentHours).toBe(parseInt(timerInitialHours))
 })
 
-test('initial minutes when timer is clean', () => {
-  expect(timerController.initialMinutes).toBe(timerInitialMinutes)
+test('current minutes when timer is clean', () => {
+  expect(timerController.currentMinutes).toBe(parseInt(timerInitialMinutes))
 })
 
-test('initial seconds when timer is clean', () => {
-  expect(timerController.initialSeconds).toBe(timerInitialSeconds)
+test('current seconds when timer is clean', () => {
+  expect(timerController.currentSeconds).toBe(parseInt(timerInitialSeconds))
 })
 
 test('timer selection', () => {
