@@ -14,6 +14,18 @@ test('current sequence must be the first one', () => {
   expect(sequenceController._currentSequence).toBe(0)
 })
 
+test('sequence title definition when there is no sequence', () => {
+  expect(() => sequenceController.title = sequenceTitle).not.toThrow()
+})
+
+test('sequence description definition when there is no sequence', () => {
+  expect(() => sequenceController.description = sequenceDescription).not.toThrow()
+})
+
+test('sequence timer definition when there is no sequence', () => {
+  expect(() => sequenceController.subscribeTaskInSequence(new Task)).not.toThrow()
+})
+
 test('sequence creation', () => {
   sequenceController.createSequence()
   expect(sequenceController.sequence.title).toBe('')
