@@ -44,9 +44,9 @@ export default class TimerComponent extends React.Component {
 
   componentDidUpdate() {
     this._selectTimer(
-      this._timerController.currentHours,
-      this._timerController.currentMinutes,
-      this._timerController.currentSeconds
+      this._timerController.initialHours,
+      this._timerController.initialMinutes,
+      this._timerController.initialSeconds
     )
     this._changeTimerValueOnScreen()
   }

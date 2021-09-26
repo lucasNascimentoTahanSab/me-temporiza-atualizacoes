@@ -17,15 +17,15 @@ export default class TimerController {
 		return this._timer
 	}
 
-	get currentHours() {
+	get initialHours() {
 		return this._timer.initialHours
 	}
 
-	get currentMinutes() {
+	get initialMinutes() {
 		return this._timer.initialMinutes
 	}
 
-	get currentSeconds() {
+	get initialSeconds() {
 		return this._timer.initialSeconds
 	}
 
@@ -90,27 +90,27 @@ export default class TimerController {
 	}
 
 	_getHoursInMilliseconds(hours) {
-		return typeof hours === 'number' ? this._getMinutesInMilliseconds(hours * 60) : 0
+		return this._getMinutesInMilliseconds(hours * 60)
 	}
 
 	_getMinutesInMilliseconds(minutes) {
-		return typeof minutes === 'number' ? this._getSecondsInMilliseconds(minutes * 60) : 0
+		return this._getSecondsInMilliseconds(minutes * 60)
 	}
 
 	_getSecondsInMilliseconds(seconds) {
-		return typeof seconds === 'number' ? Math.floor(seconds * 1000) : 0
+		return Math.floor(seconds * 1000)
 	}
 
 	_getMillisecondsInHours(milliseconds) {
-		return typeof milliseconds === 'number' ? Math.floor(milliseconds / 1000 / 60 / 60) : 0
+		return Math.floor(milliseconds / 1000 / 60 / 60)
 	}
 
 	_getMillisecondsInMinutes(milliseconds) {
-		return typeof milliseconds === 'number' ? Math.floor(milliseconds / 1000 / 60) : 0
+		return Math.floor(milliseconds / 1000 / 60)
 	}
 
 	_getMillisecondsInSeconds(milliseconds) {
-		return typeof milliseconds === 'number' ? Math.ceil(milliseconds / 1000) % 60 : 0
+		return Math.ceil(milliseconds / 1000) % 60
 	}
 
 	_formatTime(timeUnit) {
