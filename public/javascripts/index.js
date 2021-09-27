@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import TimerComponent from '../components/timer/timerComponent.jsx'
-import TaskModal from '../components/modals/taskModal/taskModal.jsx'
+import TaskManager from '../components/managers/taskManager/taskManager.jsx'
 import TaskController from './task/taskController.js'
 import SequenceController from './sequence/sequenceController.js'
 
@@ -22,7 +22,7 @@ window.addEventListener('load', () => {
     manageWindowResize()
   })
   document.getElementById('hamburguer').addEventListener('click', toggleLeftSideNav)
-  document.getElementById('create-task').addEventListener('click', openTaskModal)
+  document.getElementById('create-task').addEventListener('click', openTaskManager)
   document.getElementById('create-sequence').addEventListener('click', createSequence)
   document.getElementById('back-to-home').addEventListener('click', () => {
     if (isScreenSmall()) goBackToHomeMobile()
@@ -84,22 +84,22 @@ function toggleClass(element, style) {
   else element.classList.add(style)
 }
 
-function openTaskModal() {
+function openTaskManager() {
   toggleLeftSideNav()
-  const taskModal = <TaskModal closeModal={closeTaskModal.bind(this)} saveTask={saveTask.bind(this)} />
-  ReactDOM.render(taskModal, document.getElementById('task-modal'))
+  const taskManager = <TaskManager closeManager={closeTaskManager.bind(this)} saveTask={saveTask.bind(this)} taskController={taskController} />
+  ReactDOM.render(taskManager, document.getElementById('task-manager'))
   toggleBodyScroll()
 }
 
-function closeTaskModal() {
+function closeTaskManager() {
   deleteTask()
-  ReactDOM.unmountComponentAtNode(document.getElementById('task-modal'))
+  ReactDOM.unmountComponentAtNode(document.getElementById('task-manager'))
   toggleBodyScroll()
 }
 
 function saveTask(task) {
   taskController.subscribeTaskInTasks(task)
-  ReactDOM.unmountComponentAtNode(document.getElementById('task-modal'))
+  ReactDOM.unmountComponentAtNode(document.getElementById('task-manager'))
   toggleBodyScroll()
 }
 
