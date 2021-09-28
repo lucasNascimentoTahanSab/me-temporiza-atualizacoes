@@ -14,3 +14,10 @@
   animation: task-modal-presentation .5s;
   transition: .5s;
 }
+
+.task-manager__body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
