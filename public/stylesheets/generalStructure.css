@@ -329,6 +329,10 @@ img {
   font-size: var(--font-size-tiny-text);
 }
 
+.fill-halfly {
+  width: 50%;
+}
+
 .content-topics {
   display: flex;
   flex-direction: column;
