@@ -48,7 +48,7 @@
   padding: .5rem 1rem;
   border-radius: 5px;
   border-style: none;
-  font-family: 'Lato', sans-serif;
+  font-family: var(--font-family-text);
   font-weight: var(--font-weight-bold);
   font-size: var(--font-size-text);
   background-color: var(--color-background-light);
