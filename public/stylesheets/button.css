@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap');
+
+:root {
+  --color-selected: #D7BDE2;
+  --color-call-to-action: #741384;
+  --color-background-dark: #453E69;
+  --color-background-light: #BB8FCE;
+  --color-background-success: #1ECD97;
+  --color-background-error: #F96565;
+  --color-background-lighter: #E8DAEF;
+
+  --font-size-text: 1rem;
+  --font-size-tiny-text: .75rem;
+
+  --font-family-text: 'Lato', sans-serif;
+  --font-family-button: 'Inter', sans-serif;
+
+  --font-weight-bold: 600;
+}
+
+.button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: .5rem 1rem;
+  border-radius: 5px;
+  border-style: none;
+  font-family: var(--font-family-text);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-text);
+  background-color: var(--color-background-light);
+  color: var(--color-call-to-action);
+  box-shadow: 0 0 1rem .1rem rgba(0, 0, 0, .2);
+  text-decoration: none;
+  width: 7.5rem;
+  height: 2.2rem;
+  transition: .25s;
+}
+
+.button--add {
+  font-family: var(--font-family-button);
+  box-shadow: none;
+  width: 2.2rem;
+  height: 2.2rem;
+}
+
+.button--add:active {
+  background-color: var(--color-selected);
+}

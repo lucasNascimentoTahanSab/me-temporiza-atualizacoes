@@ -329,6 +329,10 @@ img {
   font-size: var(--font-size-tiny-text);
 }
 
+.fill-completely {
+  width: 100%;
+}
+
 .fill-halfly {
   width: 50%;
 }
