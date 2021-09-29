@@ -30,8 +30,7 @@
   padding: .5rem;
   outline: none;
   border-radius: 5px;
-  border-color: var(--color-background-dark);
-  border-width: 1px;
+  border: solid .03125rem var(--color-background-dark);
   text-align: left;
   background-color: #E8DAEF;
   color: var(--color-background-dark);
