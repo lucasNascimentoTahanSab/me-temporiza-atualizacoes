@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
+:root {
+  --color-background-dark: #453E69;
+  --color-background-lighter: #E8DAEF;
+  
+  --font-family-text: 'Lato', sans-serif;
+  
+  --font-size-list-title: 1.5rem;
+  --font-size-text: 0.95rem;
+  --font-size-tiny-text: .75rem;
+  
+  --font-weight-regular: 500;
+  --font-weight-bold: 600;
+}
+
+.list-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  height: 4rem;
+  width: 50%;
+}
+
+.list-item__section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  font-family: var(--font-family-text);
+  color: var(--color-background-dark);
+}
+
+.list-item__title {
+  font-size: var(--font-size-list-title);
+  font-weight: var(--font-weight-bold);
+}
+
+.list-item__description {
+  font-size: var(--font-size-tiny-text);
+  font-weight: var(--font-weight-regular);
+}
+
+.list-item__time {
+  font-size: var(--font-size-text);
+  font-weight: var(--font-weight-bold);
+}
+
+.list-item__buttons {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.list-item--left {
+  justify-content: flex-start;
+}
+
+.fill-three-quarters {
+  width: 75%;
+}
