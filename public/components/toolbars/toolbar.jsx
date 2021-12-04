@@ -18,10 +18,14 @@ export default class Toolbar extends React.Component {
             <input className="form-input" id="task-search"></input>
           </div>
           <div>
-            <AddButton></AddButton>
+            <AddButton action={this._openTaskModal.bind(this)}></AddButton>
           </div>
         </div>
       </div>
     )
+  }
+
+  _openTaskModal() {
+    this.props.openTaskModal()
   }
 }
