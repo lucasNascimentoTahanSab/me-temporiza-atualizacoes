@@ -1,4 +1,5 @@
 import React from 'react'
+import Toolbar from '../../toolbars/toolbar.jsx'
 import '../../../stylesheets/generalStructure.css'
 import '../../../stylesheets/taskManager.css'
 
@@ -11,7 +12,9 @@ export default class TaskManager extends React.Component {
   render() {
     return (
       <div className={"task-manager-container" + (this.state.isVisible ? "" : " hide")}>
-
+        <div className="task-manager__body">
+          <Toolbar></Toolbar>
+        </div>
       </div>
     )
   }
