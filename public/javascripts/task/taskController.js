@@ -6,10 +6,10 @@ export default class TaskController {
   _currentTask
   _timerController
 
-  constructor() {
-    this._tasks = []
-    this._currentTask = 0
-    this._timerController = new TimerController
+  constructor(taskController) {
+    this._tasks = taskController?._tasks ?? []
+    this._currentTask = taskController?._currentTask ?? 0
+    this._timerController = taskController?._timerController ?? new TimerController
   }
 
   /**

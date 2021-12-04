@@ -25,10 +25,10 @@ export default class TaskModal extends React.Component {
     )
   }
 
-  _saveTask() {
+  _saveTask(task) {
     setTimeout(() => {
       this.setState({ isVisible: false })
-      setTimeout(this.props.saveTask, 500)
+      setTimeout(this.props.saveTask(task), 500)
     }, 1000)
   }
 

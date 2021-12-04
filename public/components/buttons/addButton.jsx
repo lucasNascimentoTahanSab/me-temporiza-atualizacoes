@@ -8,9 +8,13 @@ export default class AddButton extends React.Component {
 
   render() {
     return (
-      <div className="button button--add no-select">
+      <button className="button button--add no-select" onClick={this._executeAction.bind(this)}>
         <strong>+</strong>
-      </div>
+      </button>
     )
+  }
+
+  _executeAction() {
+    this.props.action()
   }
 }

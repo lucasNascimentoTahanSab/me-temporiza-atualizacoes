@@ -86,25 +86,15 @@ function toggleClass(element, style) {
 
 function openTaskManager() {
   toggleLeftSideNav()
-  const taskManager = <TaskManager closeManager={closeTaskManager.bind(this)} saveTask={saveTask.bind(this)} taskController={taskController} />
+  const taskManager = <TaskManager closeTaskManager={closeTaskManager.bind(this)} taskController={taskController} />
   ReactDOM.render(taskManager, document.getElementById('task-manager'))
   toggleBodyScroll()
 }
 
-function closeTaskManager() {
-  deleteTask()
+function closeTaskManager(taskControllerUpdated) {
+  taskController = new TaskController(taskControllerUpdated)
   ReactDOM.unmountComponentAtNode(document.getElementById('task-manager'))
   toggleBodyScroll()
-}
-
-function saveTask(task) {
-  taskController.subscribeTaskInTasks(task)
-  ReactDOM.unmountComponentAtNode(document.getElementById('task-manager'))
-  toggleBodyScroll()
-}
-
-function deleteTask() {
-  taskController.deleteTask()
 }
 
 function createSequence() {

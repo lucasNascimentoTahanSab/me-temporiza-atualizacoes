@@ -33,8 +33,7 @@ export default class TaskForm extends React.Component {
   }
 
   render() {
-    if (!this._componentDidMount)
-      this._taskController.createTask()
+    if (!this._componentDidMount) this._createTask()
 
     return (
       <div className="task-form">
@@ -81,7 +80,7 @@ export default class TaskForm extends React.Component {
   }
 
   _saveTask(updateButtonResult) {
-    if (this._taskController.isTaskReady()) {
+    if (this._taskController.isTaskReady) {
       updateButtonResult(true)
       this.props.saveTask(this._taskController.task)
     } else {
