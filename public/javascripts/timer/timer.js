@@ -14,13 +14,13 @@ export default class Timer {
   currentSeconds
   finalTime
 
-  constructor() {
-    this.initialHours = '00'
-    this.initialMinutes = '00'
-    this.initialSeconds = '00'
-    this.currentHours = parseInt(this.initialHours)
-    this.currentMinutes = parseInt(this.initialMinutes)
-    this.currentSeconds = parseInt(this.initialSeconds)
-    this.finalTime = new Date
+  constructor(timer) {
+    this.initialHours = timer?.initialHours ?? '00'
+    this.initialMinutes = timer?.initialMinutes ?? '00'
+    this.initialSeconds = timer?.initialSeconds ?? '00'
+    this.currentHours = timer?.currentHours ?? parseInt(this.initialHours)
+    this.currentMinutes = timer?.currentMinutes ?? parseInt(this.initialMinutes)
+    this.currentSeconds = timer?.currentSeconds ?? parseInt(this.initialSeconds)
+    this.finalTime = timer?.finalTime ?? new Date
   }
 }
