@@ -2,7 +2,7 @@
   --color-background-shadow: rgba(0, 0, 0, .2);
 }
 
-.task-manager-container {
+.manager-container {
   position: fixed;
   z-index: 20;
   display: flex;
@@ -12,11 +12,11 @@
   width: 100%;
   height: 100%;
   background-color: var(--color-background-shadow);
-  animation: task-modal-presentation .5s;
+  animation: modal-presentation .5s;
   transition: .5s;
 }
 
-.task-manager__body {
+.manager__body {
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -26,7 +26,7 @@
   height: 100%;
 }
 
-.task-manager__tasks {
+.manager__items {
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -35,4 +35,16 @@
   width: 100%;
   height: 100%;
   overflow-y: auto;
+}
+
+@keyframes modal-presentation {
+  from {
+    opacity: 0; 
+    visibility: hidden; 
+  }
+
+  to {
+    opacity: 1; 
+    visibility: visible; 
+  }
 }
