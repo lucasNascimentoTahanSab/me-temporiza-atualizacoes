@@ -4,9 +4,11 @@ import TaskModal from '../../modals/taskModal/taskModal'
 import TaskController from '../../../javascripts/task/taskController.js'
 import '../../../stylesheets/generalStructure.css'
 import '../../../stylesheets/taskManager.css'
+import ListItem from '../../listItem.jsx'
 
 export default class TaskManager extends React.Component {
   _taskController
+  _timerController
 
   constructor(props) {
     super(props)
@@ -19,6 +21,9 @@ export default class TaskManager extends React.Component {
       <div className={"task-manager-container" + (this.state.isVisible ? "" : " hide")}>
         <div className="task-manager__body">
           <Toolbar openTaskModal={this._openTaskModal.bind(this)}></Toolbar>
+          <div className="task-manager__tasks">
+            {this._tasks()}
+          </div>
         </div>
         {this.state.isTaskModalVisible ? this._taskModal() : null}
       </div>
@@ -29,11 +34,16 @@ export default class TaskManager extends React.Component {
     return <TaskModal closeModal={this._closeTaskModal.bind(this)} saveTask={this._saveTask.bind(this)} />
   }
 
+  _tasks() {
+    return this._taskController.tasks?.map(task =>
+      <ListItem title={task.title} description={task.description} time={this._taskController.getTimeFormatted(task.timer)} />
+    )
+  }
+
   _saveTask(task) {
     setTimeout(() => {
-      this.setState({ isTaskModalVisible: false })
       this.props.taskController.subscribeTaskInTasks(task)
-      setTimeout(this._closeTaskModal, 500)
+      setTimeout(this._closeTaskModal.bind(this), 500)
     }, 1000)
   }
 

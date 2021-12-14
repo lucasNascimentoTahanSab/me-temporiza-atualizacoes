@@ -2,6 +2,7 @@
 
 :root {
   --color-background-dark: #453E69;
+  --color-background-light: #BB8FCE;
   --color-background-lighter: #E8DAEF;
   
   --font-family-text: 'Lato', sans-serif;
@@ -12,24 +13,30 @@
   
   --font-weight-regular: 500;
   --font-weight-bold: 600;
+  
+  --line-height-title: 1;
+  --line-height-text: 1.4;
 }
 
 .list-item {
-  position: relative;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+  gap: 1rem;
+  height: fit-content;
+  width: 75%;
+  margin-block: 1.5rem;
   padding: 1rem;
-  height: 4rem;
-  width: 50%;
+  border-radius: 0.3125rem;
+  background-color: var(--color-background-lighter);
+  opacity: 1;
+  transition: .5s;
 }
 
 .list-item__section {
   display: flex;
-  align-items: center;
-  justify-content: center;
   flex-direction: column;
-  width: 100%;
+  gap: 0.75rem;
   font-family: var(--font-family-text);
   color: var(--color-background-dark);
 }
@@ -37,11 +44,13 @@
 .list-item__title {
   font-size: var(--font-size-list-title);
   font-weight: var(--font-weight-bold);
+  height: var(--line-height-title);
 }
 
 .list-item__description {
   font-size: var(--font-size-tiny-text);
   font-weight: var(--font-weight-regular);
+  height: var(--line-height-text);
 }
 
 .list-item__time {
@@ -52,7 +61,8 @@
 .list-item__buttons {
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: flex-end;
+  gap: 1.75rem;
   width: 100%;
 }
 
@@ -62,4 +72,9 @@
 
 .fill-three-quarters {
   width: 75%;
+}
+
+.hide-text-overflow {
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

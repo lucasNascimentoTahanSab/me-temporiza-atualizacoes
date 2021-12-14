@@ -7,9 +7,8 @@ export default class EditButton extends React.Component {
 
   render() {
     return (
-      <svg width={this.props.width ?? "16"} height={this.props.height ?? "16"} viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M8.21249 11.4652L4.67696 7.92965L11.6066 0.999999L15.1421 4.53553L8.21249 11.4652Z" stroke="#453E69" stroke-width="0.65" />
-        <path d="M4.53554 8.07107L2.76777 13.3744L8.07107 11.6066" stroke="#453E69" stroke-width="0.65" />
+      <svg width={this.props.width ?? "16"} height={this.props.height ?? "16"} viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M6.07595 20.7595L0 40L19.2405 33.924L40 13.1646L33.4177 6.58228L26.8354 0L6.07595 20.7595Z" fill={this.props.fill ?? "#741384"} />
       </svg>
     )
   }

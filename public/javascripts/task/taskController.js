@@ -40,6 +40,10 @@ export default class TaskController {
     return this._tasks[this._currentTask]
   }
 
+  get tasks() {
+    return this._tasks
+  }
+
   get isTitleFilled() {
     if (this._tasks.length === 0 || this._tasks.length - 1 < this._currentTask) return false
     return this._tasks[this._currentTask].title != ''
@@ -75,5 +79,10 @@ export default class TaskController {
     if (this._tasks.length === 0 || this._tasks.length - 1 < this._currentTask) return
     this._timerController.selectTimer(hours, minutes, seconds)
     this._tasks[this._currentTask].timer = this._timerController.timer
+  }
+
+  getTimeFormatted(timer) {
+    this._timerController.selectTimer(timer.initialHours, timer.initialMinutes, timer.initialSeconds)
+    return this._timerController.getTimeFormatted()
   }
 }
