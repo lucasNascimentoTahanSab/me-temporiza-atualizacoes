@@ -32,6 +32,10 @@
   transition: 0.5s;
 }
 
+.timer__options--item:hover {
+    background-color: var(--color-selected);
+}
+
 .timer__content {
   display: flex;
   flex-direction: column;
