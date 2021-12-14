@@ -25,26 +25,34 @@ export default class TaskManager extends React.Component {
   }
 
   _tasks() {
-    return this._taskController.tasks?.map((task, index) =>
-      <ListItem title={task.title} description={task.description} time={this._taskController.getTimeFormatted(task.timer)} />
+    return this._taskController.tasks?.map(task =>
+      <ListItem
+        id={task.id}
+        title={task.title}
+        description={task.description}
+        time={this._taskController.getTimeFormatted(task.timer)}
+        editListItem={this._editCurrentTask.bind(this)} />
     )
   }
 
   _taskModal() {
-    return this.editCurrentTask
+    return this.state.editCurrentTask
       ? <TaskModal
-        task={this._taskController.task}
+        createNewTask={false}
         hours={this._taskController.task.timer.initialHours}
         minutes={this._taskController.task.timer.initialMinutes}
         seconds={this._taskController.task.timer.initialSeconds}
         closeModal={this._closeTaskModal.bind(this)}
-        saveTask={this._saveTask.bind(this)} />
+        updateTaskController={this._updateTaskController.bind(this)}
+        taskController={this._taskController} />
       : <TaskModal
+        createNewTask={true}
         hours={this.props.hours}
         minutes={this.props.minutes}
         seconds={this.props.seconds}
         closeModal={this._closeTaskModal.bind(this)}
-        saveTask={this._saveTask.bind(this)} />
+        updateTaskController={this._updateTaskController.bind(this)}
+        taskController={this._taskController} />
   }
 
   _openTaskModal() {
@@ -52,17 +60,17 @@ export default class TaskManager extends React.Component {
   }
 
   _closeTaskModal() {
-    this.setState({ isTaskModalVisible: false })
+    this.setState({ editCurrentTask: false, isTaskModalVisible: false })
   }
 
-  _saveTask(task) {
-    this.props.taskController.subscribeTaskInTasks(task)
+  _updateTaskController(taskController) {
+    this._taskController = new TaskController(taskController)
     setTimeout(this._closeTaskModal.bind(this), 500)
   }
 
-  _editCurrentTask(index) {
-    this._taskController.currentTask = index
-    this.setState({ editCurrentTask: true })
+  _editCurrentTask(id) {
+    this._taskController.currentTask = id
+    this.setState({ editCurrentTask: true, isTaskModalVisible: true })
   }
 
   _closeTaskManager() {

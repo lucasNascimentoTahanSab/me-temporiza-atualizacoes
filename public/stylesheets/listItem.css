@@ -30,7 +30,6 @@
   background-color: var(--color-background-lighter);
   opacity: 1;
   transition: .5s;
-  overflow: hidden;
 }
 
 .list-item:hover {

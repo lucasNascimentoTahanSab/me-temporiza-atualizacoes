@@ -9,7 +9,7 @@ const taskInitialMinutes = '30'
 const taskInitialSeconds = '00'
 
 test('tasks must start empty', () => {
-  expect(taskController._tasks.length).toBe(0)
+  expect(taskController._tasks.size).toBe(0)
 })
 
 test('current task must be the first one', () => {
@@ -88,22 +88,16 @@ test('is task ready?', () => {
   expect(taskController.isTaskReady).toBeTruthy()
 })
 
-test('current task change', () => {
-  const currentTask = taskController.task
-
-  taskController.subscribeTaskInTasks(currentTask)
-  expect(taskController._currentTask).toBe(1)
-
-  taskController.currentTask = 0
-  expect(taskController.task).toEqual(currentTask)
-})
-
 test('delete task when there is more than one task', () => {
+  taskController.createTask()
+  taskController.createTask()
+
   taskController.deleteTask()
   expect(taskController.task).not.toBeUndefined()
 })
 
 test('delete task when there is just one task', () => {
+  taskController.deleteTask()
   taskController.deleteTask()
   expect(taskController.task).toBeUndefined()
 })

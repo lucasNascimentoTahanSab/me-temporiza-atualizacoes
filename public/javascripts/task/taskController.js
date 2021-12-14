@@ -4,11 +4,13 @@ import TimerController from '../timer/timerController.js'
 export default class TaskController {
   _tasks
   _currentTask
+  _nextIdAvailable
   _timerController
 
   constructor(taskController) {
-    this._tasks = taskController?._tasks ?? []
+    this._tasks = taskController?._tasks ?? new Map
     this._currentTask = taskController?._currentTask ?? 0
+    this._nextIdAvailable = taskController?._nextIdAvailable ?? 0
     this._timerController = taskController?._timerController ?? new TimerController
   }
 
@@ -16,16 +18,16 @@ export default class TaskController {
    * @param {string} title
    */
   set title(title) {
-    if (this._tasks.length === 0 || this._tasks.length - 1 < this._currentTask) return
-    this._tasks[this._currentTask].title = title
+    if (this._tasks.size === 0 || !this._tasks.has(this._currentTask)) return
+    this._tasks.get(this._currentTask).title = title
   }
 
   /**
    * @param {string} description
    */
   set description(description) {
-    if (this._tasks.length === 0 || this._tasks.length - 1 < this._currentTask) return
-    this._tasks[this._currentTask].description = description
+    if (this._tasks.size === 0 || !this._tasks.has(this._currentTask)) return
+    this._tasks.get(this._currentTask).description = description
   }
 
   /**
@@ -36,24 +38,24 @@ export default class TaskController {
   }
 
   get task() {
-    if (this._tasks.length === 0 || this._tasks.length - 1 < this._currentTask) return
-    return this._tasks[this._currentTask]
+    if (this._tasks.size === 0 || !this._tasks.has(this._currentTask)) return
+    return this._tasks.get(this._currentTask)
   }
 
   get tasks() {
-    return this._tasks
+    return this._tasks.size > 0 ? Array.from(this._tasks.values()) : []
   }
 
   get isTitleFilled() {
-    if (this._tasks.length === 0 || this._tasks.length - 1 < this._currentTask) return false
-    return this._tasks[this._currentTask].title != ''
+    if (this._tasks.size === 0 || !this._tasks.has(this._currentTask)) return
+    return this._tasks.get(this._currentTask).title != ''
   }
 
   get isTimerFilled() {
-    if (this._tasks.length === 0 || this._tasks.length - 1 < this._currentTask) return false
-    return this._tasks[this._currentTask].timer.initialHours !== '00' ||
-      this._tasks[this._currentTask].timer.initialMinutes !== '00' ||
-      this._tasks[this._currentTask].timer.initialSeconds !== '00'
+    const task = this.task
+    if (!task) return false
+
+    return task.timer.initialHours !== '00' || task.timer.initialMinutes !== '00' || task.timer.initialSeconds !== '00'
   }
 
   get isTaskReady() {
@@ -61,24 +63,21 @@ export default class TaskController {
   }
 
   createTask() {
-    this._tasks.push(new Task)
-    this._currentTask = this._tasks.length - 1
-  }
-
-  subscribeTaskInTasks(task) {
-    this._tasks.push(task)
-    this._currentTask = this._tasks.length - 1
+    const newTask = new Task(this._nextIdAvailable++)
+    this._tasks.set(newTask.id, newTask)
+    this._currentTask = newTask.id
   }
 
   deleteTask() {
-    if (this._tasks.length === 0 || this._tasks.length - 1 < this._currentTask) return
-    this._tasks.splice(this._currentTask, 1)
+    if (this._tasks.size === 0 || !this._tasks.has(this._currentTask)) return
+    this._tasks.delete(this._currentTask)
+    this._currentTask = this._tasks.keys().next().value
   }
 
   setTaskTimer(hours, minutes, seconds) {
-    if (this._tasks.length === 0 || this._tasks.length - 1 < this._currentTask) return
+    if (this._tasks.size === 0 || !this._tasks.has(this._currentTask)) return
     this._timerController.selectTimer(hours, minutes, seconds)
-    this._tasks[this._currentTask].timer = this._timerController.timer
+    this._tasks.get(this._currentTask).timer = { ...this._timerController.timer }
   }
 
   getTimeFormatted(timer) {

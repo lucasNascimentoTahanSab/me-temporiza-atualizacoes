@@ -8,11 +8,13 @@ import Timer from '../timer/timer.js'
  * tasks inside of sequences.
  */
 export default class Task {
+  id
   title
   description
   timer
 
-  constructor() {
+  constructor(id) {
+    this.id = id ?? 0
     this.title = ''
     this.description = ''
     this.timer = new Timer
