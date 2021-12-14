@@ -2,8 +2,6 @@ import React from 'react'
 import PlayButton from './buttons/playButton.jsx'
 import '../stylesheets/listItem.css'
 
-const colorBackgroundDark = '#453E69'
-
 export default class ListItem extends React.Component {
   constructor(props) {
     super(props)

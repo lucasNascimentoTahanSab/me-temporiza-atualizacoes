@@ -54,6 +54,8 @@
 
 .list-item__section--right {
   width: 25%;
+  border-radius: 0 0.3125rem 0.3125rem 0;
+  overflow: hidden;
 }
 
 .list-item__title {

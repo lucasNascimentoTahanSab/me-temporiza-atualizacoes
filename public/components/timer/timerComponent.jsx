@@ -35,7 +35,7 @@ export default class TimerComponent extends React.Component {
   }
 
   componentDidMount() {
-    this._selectTimer('00', '05', '00')
+    this._selectTimer(this.props.hours, this.props.minutes, this.props.seconds)
     this._changeTimerValueOnScreen()
     $(this._hoursInput.current).keydown(this._customTimeSelectionOnKeyDown.bind(this))
     $(this._minutesInput.current).keydown(this._customTimeSelectionOnKeyDown.bind(this))

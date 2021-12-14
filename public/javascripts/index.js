@@ -11,6 +11,10 @@ const taskController = new TaskController
 const sequenceController = new SequenceController
 const slides = [];
 
+const hours = '00'
+const minutes = '05'
+const seconds = '00'
+
 const isScreenSmall = () => mobileEnvironments.test(navigator.userAgent) || window.matchMedia('(max-width: 52.5rem)').matches
 
 window.addEventListener('load', () => {
@@ -47,7 +51,7 @@ function setUpDesktopEvents() {
 }
 
 function putTimerComponentOnScreen() {
-  const timerComponent = <TimerComponent></TimerComponent>
+  const timerComponent = <TimerComponent hours={hours} minutes={minutes} seconds={seconds} />
   ReactDOM.render(timerComponent, document.getElementById('timer'))
 }
 
@@ -86,7 +90,7 @@ function toggleClass(element, style) {
 
 function openTaskManager() {
   toggleLeftSideNav()
-  const taskManager = <TaskManager closeTaskManager={closeTaskManager.bind(this)} taskController={taskController} />
+  const taskManager = <TaskManager hours={hours} minutes={minutes} seconds={seconds} closeTaskManager={closeTaskManager.bind(this)} taskController={taskController} />
   ReactDOM.render(taskManager, document.getElementById('task-manager'))
   toggleBodyScroll()
 }

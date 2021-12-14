@@ -11,7 +11,7 @@ export default class TaskManager extends React.Component {
 
   constructor(props) {
     super(props)
-    this.state = { isTaskModalVisible: false }
+    this.state = { isTaskModalVisible: false, editCurrentTask: false }
     this._taskController = new TaskController(this.props.taskController)
   }
 
@@ -25,13 +25,26 @@ export default class TaskManager extends React.Component {
   }
 
   _tasks() {
-    return this._taskController.tasks?.map(task =>
+    return this._taskController.tasks?.map((task, index) =>
       <ListItem title={task.title} description={task.description} time={this._taskController.getTimeFormatted(task.timer)} />
     )
   }
 
   _taskModal() {
-    return <TaskModal closeModal={this._closeTaskModal.bind(this)} saveTask={this._saveTask.bind(this)} />
+    return this.editCurrentTask
+      ? <TaskModal
+        task={this._taskController.task}
+        hours={this._taskController.task.timer.initialHours}
+        minutes={this._taskController.task.timer.initialMinutes}
+        seconds={this._taskController.task.timer.initialSeconds}
+        closeModal={this._closeTaskModal.bind(this)}
+        saveTask={this._saveTask.bind(this)} />
+      : <TaskModal
+        hours={this.props.hours}
+        minutes={this.props.minutes}
+        seconds={this.props.seconds}
+        closeModal={this._closeTaskModal.bind(this)}
+        saveTask={this._saveTask.bind(this)} />
   }
 
   _openTaskModal() {
@@ -43,10 +56,13 @@ export default class TaskManager extends React.Component {
   }
 
   _saveTask(task) {
-    setTimeout(() => {
-      this.props.taskController.subscribeTaskInTasks(task)
-      setTimeout(this._closeTaskModal.bind(this), 500)
-    }, 1000)
+    this.props.taskController.subscribeTaskInTasks(task)
+    setTimeout(this._closeTaskModal.bind(this), 500)
+  }
+
+  _editCurrentTask(index) {
+    this._taskController.currentTask = index
+    this.setState({ editCurrentTask: true })
   }
 
   _closeTaskManager() {

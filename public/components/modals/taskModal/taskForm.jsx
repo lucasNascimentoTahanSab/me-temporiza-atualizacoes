@@ -40,20 +40,20 @@ export default class TaskForm extends React.Component {
         <div className="task-form-container">
           <div className="task-form__field">
             <label className="form-input--label" for="task-title">Título<span className="red-highlight">*</span></label>
-            <input className="form-input" id="task-title" onChange={this._setTaskTitle.bind(this)}></input>
+            <input className="form-input" id="task-title" onChange={this._setTaskTitle.bind(this)} value={this.props.task?.title}></input>
             {this._getInlineWarningIf(this.state.showRequiredTitle, '*Dê um nome para a tarefa antes de salvar')}
           </div>
           <div className="task-form__field">
             <label className="form-input--label" for="task-description">Descrição</label>
-            <textarea className="form-input large" id="message-body" onChange={this._setTaskDescription.bind(this)}></textarea>
+            <textarea className="form-input large" id="message-body" onChange={this._setTaskDescription.bind(this)} value={this.props.task?.description}></textarea>
           </div>
           <div>
-            <TimerComponent compact={true} sendTime={this._setTaskTimer.bind(this)}></TimerComponent>
+            <TimerComponent hours={this.props.hours} minutes={this.props.minutes} seconds={this.props.seconds} compact={true} sendTime={this._setTaskTimer.bind(this)} />
             {this._getInlineWarningIf(this.state.showRequiredTimer, '*Dê um tempo para a tarefa antes de salvar')}
           </div>
         </div>
         <footer className="task-form__footer">
-          <Button buttonName={this.props.buttonName} confirm={this._saveTask.bind(this)}></Button>
+          <Button buttonName={this.props.buttonName} confirm={this._saveTask.bind(this)} />
         </footer>
       </div>
     )
